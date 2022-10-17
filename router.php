@@ -13,7 +13,7 @@
             $url = explode('/',URL);
             $this->controller = $url[1];
             $this->method = $url[2];
-            $this->controller = !empty($url[1]) ? $url[1] : 'Page';
+            $this->controller = !empty($url[1]) ? $url[1] : 'page';
             $this->method = !empty($url[2]) ? $url[2] : 'home';
             $this->controller = $this->controller . 'Controller';
 
