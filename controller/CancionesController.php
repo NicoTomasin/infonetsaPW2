@@ -11,6 +11,6 @@ class CancionesController {
 
     public function list() {
         $data['canciones'] = $this->cancionesModel->getCanciones();
-        $this->view->render('cancionesView.mustache', $data);
+        $this->view->render('loginView.mustache', $data);
     }
 }

@@ -45,7 +45,7 @@ class Mustache_Autoloader
     }
 
     /**
-     * Register a new instance as an SPL autoloader.
+     * RegisterController a new instance as an SPL autoloader.
      *
      * @param string $baseDir Mustache library base directory (default: dirname(__FILE__).'/..')
      *

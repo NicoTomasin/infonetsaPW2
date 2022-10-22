@@ -7,12 +7,12 @@ include_once('helpers/Router.php');
 
 include_once('model/CancionesModel.php');
 include_once('model/PresentacionesModel.php');
-include_once ("model/QuieroSerParteModel.php");
+include_once ("model/RegisterModel.php");
 
 include_once('controller/PresentacionesController.php');
 include_once('controller/CancionesController.php');
 include_once('controller/LaBandaController.php');
-include_once('controller/QuieroSerParteController.php');
+include_once('controller/RegisterController.php');
 
 include_once ('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -40,8 +40,8 @@ class Configuration {
         return new LaBandaController($this->view);
     }
 
-    public function getQuieroserparteController(){
-        return new QuieroSerParteController($this->view, $this->getQuieroSerParteModel());
+    public function getRegisterController(){
+        return new RegisterController($this->view, $this->getRegisterModel());
     }
 
     private function createCancionesModel(): CancionesModel {
@@ -56,7 +56,7 @@ class Configuration {
         return new Router($this, "laBanda", "list");
     }
 
-    private function getQuieroSerParteModel() {
-        return new QuieroSerParteModel($this->database);
+    private function getRegisterModel() {
+        return new RegisterModel($this->database);
     }
 }

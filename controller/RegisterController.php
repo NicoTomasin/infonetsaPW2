@@ -1,6 +1,6 @@
 <?php
 
-class QuieroSerParteController {
+class RegisterController {
     private $renderer;
     private $model;
 
@@ -14,14 +14,16 @@ class QuieroSerParteController {
     }
 
     public function alta(){
-        $this->renderer->render("quieroSerParteForm.mustache");
+        $this->renderer->render("RegisterFrom.mustache");
     }
 
     public function procesarAlta(){
-        $nombre = $_POST["nombre"];
-        $instrumento = $_POST["instrumento"];
+        $nombre = $_POST["nombre"]??'';
+        $apellido = $_POST["apellido"]??'';
+        $mail = $_POST["mail"]??'';
+        $password = $_POST["password"]??'';
 
-        $this->model->alta($nombre,$instrumento);
+        $this->model->alta($nombre,$apellido,$mail,$password);
 
         Redirect::doIt('/');
     }
