@@ -11,10 +11,9 @@ class LoginModel
         $this->database = $database;
     }
 
-    public function alta($nombre, $apellido, $mail, $password)
+    public function buscarUsuario($mail)
     {
-        $sql = "INSERT INTO usuario(`nombre`, `apellido`, `mail`, `password`)
-VALUES (`$nombre`,`$apellido`, `$mail`,`$password`)";
-        $this->database->execute($sql);
+        $sql = "SELECT `mail`, `password` FROM `usuario` WHERE `mail` = '$mail'";
+        return $this->database->query($sql);
     }
 }

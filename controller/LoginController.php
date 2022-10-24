@@ -13,15 +13,16 @@ class LoginController {
         $this->renderer->render("Login.mustache");
     }
 
-    public function procesarAlta(){
-        $nombre = $_POST["nombre"]??'';
-        $apellido = $_POST["apellido"]??'';
+    public function procesar(){
         $mail = $_POST["mail"]??'';
         $password = $_POST["password"]??'';
+        $respuesta = $this->model->buscarUsuario($mail);
+        if($password === $respuesta[0]['password']){
+            echo"login piola";
+        } else {
+            Redirect::doIt('/');
+        }
 
-        $this->model->alta($nombre,$apellido,$mail,$password);
-
-        Redirect::doIt('/');
     }
 
 }

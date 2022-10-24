@@ -13,14 +13,13 @@ class RegisterController {
         $this->renderer->render("Register.mustache");
     }
 
-    public function procesarAlta(){
+    public function alta(){
         $nombre = $_POST["nombre"]??'';
         $apellido = $_POST["apellido"]??'';
         $mail = $_POST["mail"]??'';
         $password = $_POST["password"]??'';
 
         $this->model->alta($nombre,$apellido,$mail,$password);
-
         Redirect::doIt('/');
     }
 
