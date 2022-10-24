@@ -1,6 +1,6 @@
 <?php
 
-class RegisterController {
+class LoginController {
     private $renderer;
     private $model;
 
@@ -9,8 +9,8 @@ class RegisterController {
         $this->model = $model;
     }
 
-    public function default() {
-        $this->renderer->render("Register.mustache");
+    public function default(){
+        $this->renderer->render("Login.mustache");
     }
 
     public function procesarAlta(){

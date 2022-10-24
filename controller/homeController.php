@@ -1,6 +1,6 @@
 <?php
 
-class LaBandaController {
+class homeController {
 
     private $view;
 
@@ -8,7 +8,7 @@ class LaBandaController {
         $this->view = $view;
     }
 
-    public function list() {
-        $this->view->render('labandaView.mustache');
+    public function default() {
+        $this->view->render('Home.mustache');
     }
 }

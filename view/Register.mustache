@@ -1,4 +1,12 @@
-{{> header}}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+  </head>
+  <body>
+  {{> header}}
 <div id="register" class="container w-75 shadow">
     <div class="row align-items-stretch">
         <div id="login_image"class="col d-none d-lg-block col-md-5 col-lg-5 col-XL-6">
@@ -8,8 +16,16 @@
             <div class="text-end">
                 <img src="../public/logo.png" width="48" alt="">
             </div>
-            <h2 class="fw-bold text-center py-5">Iniciar Sesión</h2>
+            <h2 class="fw-bold text-center py-5">Registrate</h2>
             <form method="post" action="/register/alta">
+                <div class="mb-4">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="nombre">
+                </div>
+                <div class="mb-4">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" name="apellido">
+                </div>
                 <div class="mb-4">
                     <label for="mail" class="form-label">Email</label>
                     <input type="text" class="form-control" name="mail">
@@ -19,7 +35,7 @@
                     <input type="password" class="form-control" name="password">
                 </div>
                 <div class="d-grid">
-                    <button type="submit" class="btn-secondary">Inicia Sesión</button>
+                    <button type="submit" class="btn-secondary">Registrate</button>
                 </div>
 <div>
     <h4 id="slogan" class="text-center">La nueva manera de ver las noticias</h4>
@@ -29,4 +45,6 @@
         </div>
     </div>
 </div>
-{{> footer}}
+ </body>
+  {{> footer}}
+</html>
