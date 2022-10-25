@@ -29,5 +29,9 @@ class MySQlDatabase {
     public function execute($sql) {
         $this->conexion->query($sql);
     }
-
+    public function queryResId($sql) {
+        $this->conexion->query($sql);
+        $last_id = mysqli_insert_id($this->conexion);
+        return $last_id;
+    }
 }

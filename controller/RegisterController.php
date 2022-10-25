@@ -17,10 +17,9 @@ class RegisterController {
         $nombre = $_POST["nombre"]??'';
         $apellido = $_POST["apellido"]??'';
         $mail = $_POST["mail"]??'';
-        $password = $_POST["password"]??'';
-
+        $password = md5($_POST["password"])??'';
         $this->model->alta($nombre,$apellido,$mail,$password);
-        Redirect::doIt('/');
+        Redirect::doIt("/authentication?mail=$mail");
     }
 
 }
