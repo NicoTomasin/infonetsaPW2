@@ -13,7 +13,14 @@ class LoginModel
 
     public function buscarUsuario($mail)
     {
-        $sql = "SELECT `mail`, `password` FROM `usuario` WHERE `mail` = '$mail'";
+        $sql = "SELECT `mail`, `password` FROM `login_usuario` WHERE `mail` = '$mail'";
         return $this->database->query($sql);
     }
+    public function buscarTipoDeUsuario($mail)
+    {
+        $sql = "SELECT `tipo` FROM `usuario` WHERE `mail` = '$mail'";
+        return $this->database->query($sql);
+    }
+
+
 }

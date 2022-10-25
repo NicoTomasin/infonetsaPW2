@@ -1,5 +1,6 @@
 <?php
 include_once ("helpers/Redirect.php");
+include_once ("helpers/SessionTypeChecker.php");
 include_once('helpers/MySQlDatabase.php');
 include_once('helpers/MustacheRenderer.php');
 include_once('helpers/Logger.php');

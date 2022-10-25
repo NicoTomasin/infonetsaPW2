@@ -18,8 +18,14 @@ class RegisterController {
         $apellido = $_POST["apellido"]??'';
         $mail = $_POST["mail"]??'';
         $password = md5($_POST["password"])??'';
-        $this->model->alta($nombre,$apellido,$mail,$password);
-        Redirect::doIt("/authentication?mail=$mail");
+        $res = $this->model->buscarUsuario($mail);
+        if($res){
+            Redirect::doIt("/"); //yaexiste
+        } else {
+            $this->model->alta($nombre,$apellido,$mail,$password);
+            Redirect::doIt("/authentication?mail=$mail");
+        }
+
     }
 
 }
