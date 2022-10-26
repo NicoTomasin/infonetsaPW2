@@ -9,7 +9,15 @@ class homeController {
     }
 
     public function default() {
-        $this->view->render('Home.mustache');
+        //aca
+        $data = array(
+            'logeado' => "si",
+            'datos'  => array(
+                'usuario' => 'lolardo',
+                'foto' => 'www.lolaso.com',
+            ),
+          );
+        $this->view->render('Home.mustache',$data);
     }
     public function admin() {
         if(SessionTypeChecker::puedeAcceder('ADMIN')){
