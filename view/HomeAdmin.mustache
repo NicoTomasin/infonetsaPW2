@@ -13,7 +13,40 @@
       <h2 class='w3-wide'>Esto es de Admin</h2>
       <p class='w3-opacity'><i>La verdad de hoy</i></p>
   </div>
-
+  <div id="login_form" class="col p-5">
+    <h2 class="fw-bold text-center py-5">Registrar Editor</h2>
+    <form method="post" action="/register/alta">
+        <div class="mb-4">
+            <label for="mail" class="form-label">Email</label>
+            <input type="text" class="form-control" name="mail">
+        </div>
+        <div class="mb-4">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+        <input id="tipo" name="tipo" type="hidden" value="4">
+        <div class="d-grid">
+            <button type="submit" class="btn-secondary">Registrar Editor</button>
+        </div>
+    </form>
+  </div>
+  <div id="login_form" class="col p-5">
+    <h2 class="fw-bold text-center py-5">Registrar Escritor</h2>
+    <form method="post" action="/register/alta">
+        <div class="mb-4">
+            <label for="mail" class="form-label">Email</label>
+            <input type="text" class="form-control" name="mail">
+        </div>
+        <div class="mb-4">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+        <input id="tipo" name="tipo" type="hidden" value="3">
+        <div class="d-grid">
+            <button type="submit" class="btn-secondary">Registrar Escritor</button>
+        </div>
+    </form>
+  </div>
   </body>
   {{> footer}}
 </html>

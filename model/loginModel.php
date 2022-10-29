@@ -21,4 +21,9 @@ class LoginModel
         $sql = "SELECT `tipo` FROM `usuario` WHERE `mail` = '$mail'";
         return $this->database->query($sql);
     }
+    public function buscarEstadoDeUsuario($mail)
+    {
+        $sql = "SELECT `estado` FROM `usuario` WHERE `mail` = '$mail'";
+        return $this->database->query($sql);
+    }
 }

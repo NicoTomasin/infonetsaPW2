@@ -20,24 +20,30 @@ class LoginController
     {
         $mail = $_POST["mail"] ?? '';
         $password = md5($_POST["password"]) ?? '';
-        $respuesta = $this->model->buscarUsuario($mail);
-        if ($password === $respuesta[0]['password']) {
-            $res = $this->model->buscarTipoDeUsuario($mail);
-            $_SESSION['UsrType'] = $res[0]['tipo'];
-            $_SESSION['UsrMail'] = $mail;
-            switch ($_SESSION['UsrType']) {
-                case 1:
-                    Redirect::doIt('/home/admin');
-                    break;
-                case 2:
-                    Redirect::doIt('/home/lector');
-                    break;
-                case 3:
-                    Redirect::doIt('/home/escritor');
-                    break;
-                case 4:
-                    Redirect::doIt('/home/editor');
-                    break;
+        $respuestaPass = $this->model->buscarUsuario($mail);
+        $respuestaEstado = $this->model->buscarEstadoDeUsuario($mail); 
+
+        if ($respuestaPass && $password === $respuestaPass[0]['password']) {
+            if($respuestaEstado[0]['estado']){
+                $res = $this->model->buscarTipoDeUsuario($mail);
+                $_SESSION['UsrType'] = $res[0]['tipo'];
+                $_SESSION['UsrMail'] = $mail;
+                switch ($_SESSION['UsrType']) {
+                    case 1:
+                        Redirect::doIt('/home/admin');
+                        break;
+                    case 2:
+                        Redirect::doIt('/home/lector');
+                        break;
+                    case 3:
+                        Redirect::doIt('/home/escritor');
+                        break;
+                    case 4:
+                        Redirect::doIt('/home/editor');
+                        break;
+                }
+            } else {
+                Redirect::doIt("/authentication?mail=$mail");
             }
         } else {
             Redirect::doIt('/');
