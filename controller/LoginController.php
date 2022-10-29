@@ -24,6 +24,7 @@ class LoginController
         if ($password === $respuesta[0]['password']) {
             $res = $this->model->buscarTipoDeUsuario($mail);
             $_SESSION['UsrType'] = $res[0]['tipo'];
+            $_SESSION['UsrMail'] = $mail;
             switch ($_SESSION['UsrType']) {
                 case 1:
                     Redirect::doIt('/home/admin');
@@ -42,5 +43,10 @@ class LoginController
             Redirect::doIt('/');
         }
 
+    }
+    public function logout()
+    {
+        session_destroy();
+        Redirect::doIt('/');
     }
 }

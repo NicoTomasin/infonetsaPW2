@@ -9,7 +9,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="../public/styles.css" rel="stylesheet">
 <body>
-
 <!-- Navbar -->
 <div class='w3-top'>
     <div class='w3-bar w3-black w3-card'>
@@ -17,8 +16,14 @@
            href='javascript:void(0)' onclick='myFunction()' title='Toggle Navigation Menu'><i
                     class='fa fa-bars'></i></a>
         <a href='/' class='w3-bar-item w3-button w3-padding-large'>Inicio</a>
-        <a href='/login'  class='w3-bar-item w3-button w3-padding-large w3-hide-small'>Login</a>
-        <a href='/register' class='w3-bar-item w3-button w3-padding-large w3-hide-small'>Registrarse</a>
+        {{^.}}
+             <a href='/login'  class='w3-bar-item w3-button w3-padding-large w3-hide-small'>Login</a>
+             <a href='/register' class='w3-bar-item w3-button w3-padding-large w3-hide-small'>Registrarse</a>
+        {{/.}}
+        {{#.}}
+              <a href='/'  class='w3-bar-item w3-button w3-padding-large w3-hide-small'>{{mail}}</a>
+              <a href='/login/logout' class='w3-bar-item w3-button w3-padding-large w3-hide-small'>Cerrar Sesion</a>
+        {{/.}}
     </div>
 </div>
 

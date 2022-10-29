@@ -21,6 +21,4 @@ class LoginModel
         $sql = "SELECT `tipo` FROM `usuario` WHERE `mail` = '$mail'";
         return $this->database->query($sql);
     }
-
-
 }

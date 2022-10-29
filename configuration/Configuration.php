@@ -10,6 +10,7 @@ include_once ("model/RegisterModel.php");
 include_once('model/LoginModel.php');
 include_once('model/AuthenticationModel.php');
 include_once('model/PublicacionModel.php');
+include_once('model/HomeModel.php');
 
 include_once('controller/HomeController.php');
 include_once('controller/RegisterController.php');
@@ -36,6 +37,9 @@ class Configuration {
     private function getRegisterModel() {
         return new RegisterModel($this->database);
     }
+    private function getHomeModel() {
+        return new HomeModel($this->database);
+    }
     private function getAuthenticationModel() {
         return new AuthenticationModel($this->database);
     }
@@ -55,7 +59,7 @@ class Configuration {
         return new PublicacionController($this->view,$this->getLoginModel());
     }
     public function getHomeController() {
-        return new homeController($this->view);
+        return new homeController($this->view, $this->getHomeModel());
     }
 
 
