@@ -17,8 +17,27 @@ class ArticuloController
         $fecha = $_POST["fecha"] ?? '';
         $empresa = $_POST["empresa"] ?? '';
         $cuerpo = $_POST["cuerpo"] ?? '';
-        echo $titulo, $subtitulo, $fecha, $empresa, $cuerpo;
-        //TODO: llamar al model y dar de alta en espera
+        $escritor = $_SESSION['UsrMail'];
+        $this->model->ponerEnEspera($titulo, $subtitulo, $fecha, $empresa, $cuerpo, $escritor);
+        Redirect::doIt('/home/escritor');
+    }
+    public function eliminar()
+    {
+        $titulo = $_POST["titulo"] ?? '';
+        $escritor = $_POST["escritor"] ?? '';
+        $this->model->eliminar($titulo, $escritor);
+        Redirect::doIt('/home/editor');
+    }
+    public function publicar()
+    {
+        $titulo = $_POST["titulo"] ?? '';
+        $escritor = $_POST["escritor"] ?? '';
+        $this->model->publicar($titulo, $escritor);
+        Redirect::doIt('/home/editor');
+    }
+    public function correccion()
+    {
+       //TODO:Dar al escritor la chance de editarlo
     }
 
 }

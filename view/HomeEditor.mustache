@@ -1,17 +1,84 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+<style type="text/css">
+    .tftable {
+        font-size: 12px;
+        color: #333333;
+        width: 100%;
+        border-width: 1px;
+        border-color: #729ea5;
+        border-collapse: collapse;
+    }
+
+    .tftable th {
+        font-size: 12px;
+        background-color: #acc8cc;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #729ea5;
+        text-align: left;
+    }
+
+    .tftable tr {
+        background-color: #ffffff;
+    }
+
+    .tftable td {
+        font-size: 12px;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #729ea5;
+    }
+
+    .tftable tr:hover {
+        background-color: #acc8cc;
+    }
+</style>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
     <title>Home Editor</title>
-  </head>
-  <body>
-  {{> header}}
-  <div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
-      <h2 class='w3-wide'>Esto es de Editor</h2>
-      <p class='w3-opacity'><i>La verdad de hoy</i></p>
-  </div>
-  </body>
-  {{> footer}}
+</head>
+<body>
+{{> header}}
+<div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
+    <table class="tftable" border="1">
+        <tr>
+            <th>Escritor</th>
+            <th>Titulo</th>
+            <th>Empresa</th>
+            <th>Acciones</th>
+        </tr>
+        {{#articulosPendientes}}
+            <tr>
+                <td>{{escritor}}</td>
+                <td>{{titulo}}</td>
+                <td>{{empresa}}</td>
+                <td>
+                    <form method="post" action="/articulo/eliminar">
+                        <input id="escritor" name="escritor" type="hidden" value="{{escritor}}">
+                        <input id="titulo" name="titulo" type="hidden" value="{{titulo}}">
+                        <button type="submit" class="btn-secondary">Eliminar</button>
+                    </form>
+                    <form method="post" action="/articulo/publicar">
+                        <input id="escritor" name="escritor" type="hidden" value="{{escritor}}">
+                        <input id="titulo" name="titulo" type="hidden" value="{{titulo}}">
+                        <button type="submit" class="btn-secondary">Publicar</button>
+                    </form>
+                    <form method="post" action="/articulo/correcion">
+                        <input id="escritor" name="escritor" type="hidden" value="{{escritor}}">
+                        <input id="titulo" name="titulo" type="hidden" value="{{titulo}}">
+                        <button type="submit" class="btn-secondary">Correcion</button>
+                    </form>
+                </td>
+            </tr>
+
+        {{/articulosPendientes}}
+    </table>
+</div>
+</body>
+{{> footer}}
 </html>
 

@@ -59,7 +59,7 @@ class Configuration {
         return new ArticuloController($this->view,$this->getArticuloModel());
     }
     public function getHomeController() {
-        return new homeController($this->view, $this->getHomeModel());
+        return new homeController($this->view, $this->getHomeModel(), $this->getArticuloModel());
     }
 
 

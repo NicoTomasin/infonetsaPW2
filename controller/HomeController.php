@@ -4,9 +4,12 @@ class homeController {
 
     private $view;
     private $model;
-    public function __construct($view,$model) {
+    private $modelArticulos;
+    public function __construct($view,$model,$modelArticulos) {
         $this->view = $view;
         $this->model = $model;
+        $this->modelArticulos = $modelArticulos;
+
     }
 
     public function default() {
@@ -22,6 +25,13 @@ class homeController {
             'telefono' => $datos[0]['telefono'],
             'tipo' => $datos[0]['tipo'],
         );
+    }
+    private function datosDelUsuarioEditor()
+    {
+        $datos =  $this->datosDelUsuario();
+        $datos['articulosPendientes'] =  $this->modelArticulos->buscarArticulosPendientes();
+        return $datos;
+
     }
     public function admin() {
         if(SessionTypeChecker::puedeAcceder('ADMIN')){
@@ -39,7 +49,7 @@ class homeController {
     }
     public function editor() {
         if(SessionTypeChecker::puedeAcceder('EDITOR')){
-            $this->view->render('HomeEditor.mustache', $this->datosDelUsuario());
+            $this->view->render('HomeEditor.mustache', $this->datosDelUsuarioEditor());
         }else {
             Redirect::doIt('/');
         }
