@@ -28,20 +28,7 @@ class LoginController
                 $res = $this->model->buscarTipoDeUsuario($mail);
                 $_SESSION['UsrType'] = $res[0]['tipo'];
                 $_SESSION['UsrMail'] = $mail;
-                switch ($_SESSION['UsrType']) {
-                    case 1:
-                        Redirect::doIt('/home/admin');
-                        break;
-                    case 2:
-                        Redirect::doIt('/home/lector');
-                        break;
-                    case 3:
-                        Redirect::doIt('/home/escritor');
-                        break;
-                    case 4:
-                        Redirect::doIt('/home/editor');
-                        break;
-                }
+                Redirect::doIt('/home');
             } else {
                 Redirect::doIt("/authentication?mail=$mail");
             }

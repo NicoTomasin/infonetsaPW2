@@ -9,7 +9,7 @@ include_once('helpers/Router.php');
 include_once ("model/RegisterModel.php");
 include_once('model/LoginModel.php');
 include_once('model/AuthenticationModel.php');
-include_once('model/HomeModel.php');
+include_once('model/UsuarioModel.php');
 include_once('model/ArticuloModel.php');
 
 include_once('controller/HomeController.php');
@@ -17,6 +17,7 @@ include_once('controller/RegisterController.php');
 include_once('controller/LoginController.php');
 include_once('controller/AuthenticationController.php');
 include_once('controller/ArticuloController.php');
+include_once('controller/UsuarioController.php');
 
 include_once ('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -37,14 +38,14 @@ class Configuration {
     private function getRegisterModel() {
         return new RegisterModel($this->database);
     }
-    private function getHomeModel() {
-        return new HomeModel($this->database);
-    }
     private function getAuthenticationModel() {
         return new AuthenticationModel($this->database);
     }
     private function getArticuloModel() {
         return new ArticuloModel($this->database);
+    }
+    private function getUsuarioModel() {
+        return new UsuarioModel($this->database);
     }
     public function getRegisterController(){
         return new RegisterController($this->view, $this->getRegisterModel());
@@ -58,8 +59,11 @@ class Configuration {
     public function getArticuloController() {
         return new ArticuloController($this->view,$this->getArticuloModel());
     }
+    public function getUsuarioController() {
+        return new UsuarioController($this->view,$this->getUsuarioModel(),$this->getArticuloModel());
+    }
     public function getHomeController() {
-        return new homeController($this->view, $this->getHomeModel(), $this->getArticuloModel());
+        return new homeController($this->view, $this->getUsuarioController());
     }
 
 
