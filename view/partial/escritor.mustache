@@ -11,18 +11,25 @@
             <input type="text" class="form-control" name="subtitulo">
         </div>
         <div class="mb-4">
-          <label for="fecha" class="form-label">Fecha de la noticia</label>
-          <input type="date"class="form-control" name="fecha">
+            <label for="fecha" class="form-label">Producto a publicar</label>
+            <select class="form-control" name="producto" id="producto">
+                {{#productos}}
+                    <option value={{id}}>{{nombre}}</option>
+                {{/productos}}
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="fecha" class="form-label">Seccion</label>
+            <select class="form-control" name="seccion" id="seccion">
+                {{#secciones}}
+                    <option value={{id}}>{{nombre}}</option>
+                {{/secciones}}
+            </select>
+        </div>
+        <div class="mb-4">
+          <label for="edicion" class="form-label">Edicion noticia</label>
+          <input type="date"class="form-control" name="edicion">
       </div>
-      <div class="mb-4">
-        <label for="fecha" class="form-label">Empresa a publicar</label>
-         <select class="form-control" name="empresa" id="empresa">
-            <option value="clarin">Clarin</option>
-            <option value="lanacion">La Nacion</option>
-            <option value="ole">Ole</option>
-          </select>
-    </div>
-      
       <div class="mb-4">
         <label for="cuerpo" class="form-label">Cuerpo de la noticia</label>
         <textarea name="cuerpo"class="form-control" placeholder="Cuerpo"></textarea>

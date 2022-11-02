@@ -1,4 +1,4 @@
-<style type="text/css">
+<style>
     .tftable {
         font-size: 12px;
         color: #333333;
@@ -39,14 +39,14 @@
         <tr>
             <th>Escritor</th>
             <th>Titulo</th>
-            <th>Empresa</th>
+            <th>Producto</th>
             <th>Acciones</th>
         </tr>
         {{#articulosPendientes}}
             <tr>
                 <td>{{escritor}}</td>
                 <td>{{titulo}}</td>
-                <td>{{empresa}}</td>
+                <td>{{nombre}}</td>
                 <td>
                     <form method="post" action="/articulo/eliminar">
                         <input id="escritor" name="escritor" type="hidden" value="{{escritor}}">

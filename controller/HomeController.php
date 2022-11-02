@@ -13,6 +13,8 @@ class homeController {
         if(isset($_SESSION['UsrMail'])){
             if(SessionTypeChecker::puedeAcceder('EDITOR')){
                 $this->view->render('Home.mustache', $this->controllerUsuario->datosDelUsuarioEditor($_SESSION['UsrMail']));
+            }else if(SessionTypeChecker::puedeAcceder('LECTOR')){
+                $this->view->render('Home.mustache', $this->controllerUsuario->datosDelLector($_SESSION['UsrMail']));
             }else{
                 $this->view->render('Home.mustache', $this->controllerUsuario->datosDelUsuario($_SESSION['UsrMail']));
             }

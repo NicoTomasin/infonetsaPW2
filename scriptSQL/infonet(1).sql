@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2022 a las 23:34:30
+-- Tiempo de generación: 02-11-2022 a las 04:48:09
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -31,8 +31,9 @@ CREATE TABLE `articulo` (
   `id` int(100) NOT NULL,
   `titulo` varchar(140) NOT NULL,
   `subtitulo` varchar(500) NOT NULL,
-  `fecha` date NOT NULL,
-  `empresa` varchar(50) NOT NULL,
+  `edicion` date NOT NULL,
+  `producto` varchar(50) NOT NULL,
+  `seccion` int(11) NOT NULL,
   `cuerpo` varchar(5000) NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT 0,
   `escritor` varchar(50) NOT NULL
@@ -42,8 +43,28 @@ CREATE TABLE `articulo` (
 -- Volcado de datos para la tabla `articulo`
 --
 
-INSERT INTO `articulo` (`id`, `titulo`, `subtitulo`, `fecha`, `empresa`, `cuerpo`, `estado`, `escritor`) VALUES
-(2, 'Elon Musk confirmó que formará un consejo de moderación de contenidos en Twitter “con puntos de vista diversos”\r\n', 'Con esta decisión, el también director de Tesla parece referirse a todos aquellos que han visto sus cuentas bloqueadas en los últimos años por violar las políticas de publicación de la red, mayormente por enviar mensajes de odio o escribir insultos', '2022-10-28', 'Infobae', 'El magnate Elon Musk, ya propietario único de Twitter, anunció este viernes que creará un “consejo de moderación de contenidos” en la plataforma, que se caracterizará por incluir “puntos de vista ampliamente diversos”.\r\n\r\nMusk, que ha elegido su propia cuenta de Twitter para comunicar algunas de sus intenciones, señala en su último tuit que “mientras ese consejo no se reúna, no habrá mayores decisiones sobre contenidos ni restablecimientos de cuentas”.\r\n\r\nCon esa última frase, Musk parece referirse a todos aquellos que han visto sus cuentas bloqueadas en los últimos años por violar las políticas de contenido de la red, mayormente por publicar mensajes de odio o escribir insultos en sus cuentas.\r\n\r\nTe puede interesar: Cuánto les pagará Elon Musk como indemnización a los principales ejecutivos de Twitter que despidió\r\nLa cuenta más prominente de las bloqueadas ha sido la del ex presidente estadounidense Donald Trump (2017-2021), expulsado de Twitter y de otras redes sociales como Facebook tras el asalto al Capitolio en enero de 2021, al considerar que había instigado desde su cuenta a sus seguidores para protagonizar aquellos hechos violentos.\r\nHoy mismo, el propio Trump saludó la toma de control de Twitter por parte de Musk al publicar en su red social Truth que se sentía “feliz porque Twitter está ahora en manos (de personas) cuerdas”, pero no aclaró si tenía intención de regresar como usuario a una red de la que llegó a hacer un uso casi compulsivo.\r\n\r\nSegún algunos de los principales medios de prensa de Estados Unidos, la primera medida de Musk tras hacerse con las riendas de la empresa ha sido despedir a algunos de sus máximos directivos, entre ellos el consejero delegado, Parag Agrawal, así como el director financiero, Ned Segal, y la máxima responsable de políticas y asuntos legales, Vijaya Gadde.\r\n\r\nTe puede interesar: Twitter, otra vez en problemas: se hunden sus acciones y EEUU amenaza con investigar a las empresas de Musk por supuesta cercanía a Putin\r\nSin embargo, Musk aún no ha confirmado, ni mediante tuits ni de ningún otro modo, el cese de la plana mayor de Twitter y las condiciones inherentes a esos despidos.\r\n\r\nAntes de cerrar la adquisición, Elon Musk, también  propietario de Tesla y SpaceX, se presentó en la sede de Twitter, el miércoles, con una gran sonrisa y cargando un lavabo de porcelana, una escena que luego publicó en un tuit junto a la frase: “Deja que se hunda”, que también podría interpretarse como “Vayamos asumiéndolo”, haciendo un juego con la palabra “sink”. Musk también cambió su descripción en su perfil de Twitter y ahora aparece como “Jefe Tuitero”.\r\nCuando quedaban poco más de 24 horas para que expirara el plazo que le había dado una jueza para abrir un proceso si no se formalizaba la compra de la red social, Musk confirmó que iba a comprar la empresa “por el futuro de la civilización”.\r\n\r\n“Es importante para el futuro de la civilización tener una plaza digital común donde pueda debatirse de manera sana un amplio espectro de creencias”, escribió en un mensaje a los anunciantes en Twitter, al tiempo que adelantó que la publicidad tendrá un lugar relevante en la red a partir de ahora.\r\n\r\n(Con información de EFE)', 0, 'escritor@escritor.com');
+INSERT INTO `articulo` (`id`, `titulo`, `subtitulo`, `edicion`, `producto`, `seccion`, `cuerpo`, `estado`, `escritor`) VALUES
+(5, 'Gano alguien', 'comodamente', '2022-11-02', '7', 1, 'qasdasasd', 1, 'escritor@escritor.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `edicion`
+--
+
+CREATE TABLE `edicion` (
+  `id` int(11) NOT NULL,
+  `precio` double NOT NULL,
+  `producto` varchar(100) NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `edicion`
+--
+
+INSERT INTO `edicion` (`id`, `precio`, `producto`, `fecha`) VALUES
+(1, 500, '7', '2022-11-02');
 
 -- --------------------------------------------------------
 
@@ -69,6 +90,69 @@ INSERT INTO `login_usuario` (`id`, `mail`, `password`, `authCode`) VALUES
 (16, 'escritor@escritor.com', '202cb962ac59075b964b07152d234b70', '4fabc46c2df0f7ef9c776cc2531c184e'),
 (17, 'editor@editor', '202cb962ac59075b964b07152d234b70', 'a604122fa62c8f97bd1124eab81edc71'),
 (18, 'nsngt47@gmail.com', '202cb962ac59075b964b07152d234b70', '7aeb08011c41ffc7dae36a034828122a');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `producto`
+--
+
+CREATE TABLE `producto` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `tipo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id`, `nombre`, `tipo`) VALUES
+(5, 'Clarin', '1'),
+(6, 'Ole', '1'),
+(7, 'La Nacion', '1'),
+(8, 'Miradas', '2');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `secciones`
+--
+
+CREATE TABLE `secciones` (
+  `id` int(100) NOT NULL,
+  `nombre` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `secciones`
+--
+
+INSERT INTO `secciones` (`id`, `nombre`) VALUES
+(1, 'Deportes'),
+(2, 'Economia'),
+(3, 'Interes General'),
+(4, 'Moda'),
+(5, 'Politica');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_producto`
+--
+
+CREATE TABLE `tipo_producto` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_producto`
+--
+
+INSERT INTO `tipo_producto` (`id`, `nombre`) VALUES
+(1, 'Diario'),
+(2, 'Revista');
 
 -- --------------------------------------------------------
 
@@ -129,6 +213,30 @@ ALTER TABLE `articulo`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `edicion`
+--
+ALTER TABLE `edicion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `secciones`
+--
+ALTER TABLE `secciones`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tipo_producto`
+--
+ALTER TABLE `tipo_producto`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
@@ -148,7 +256,31 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `edicion`
+--
+ALTER TABLE `edicion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `secciones`
+--
+ALTER TABLE `secciones`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_producto`
+--
+ALTER TABLE `tipo_producto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`

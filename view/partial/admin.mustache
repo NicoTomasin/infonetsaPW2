@@ -36,3 +36,23 @@
         </div>
     </form>
   </div>
+  <div id="login_form" class="col p-5">
+      <h2 class="fw-bold text-center py-5">Agregar Producto</h2>
+      <form method="post" action="/producto/agregar">
+          <div class="mb-4">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" name="nombre">
+          </div>
+          <div class="mb-4">
+              <label for="fecha" class="form-label">Tipo</label>
+              <select class="form-control" name="tipo" id="tipo">
+                  {{#tiposDeProductos}}
+                      <option value={{id}}>{{nombre}}</option>
+                  {{/tiposDeProductos}}
+              </select>
+          </div>
+          <div class="d-grid">
+              <button type="submit" class="btn-secondary">Agregar producto</button>
+          </div>
+      </form>
+  </div>
