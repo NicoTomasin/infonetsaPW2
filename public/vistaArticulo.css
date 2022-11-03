@@ -1,0 +1,48 @@
+.noticiacompleta
+{
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+   width:  70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8%;
+}
+
+.titulo
+{
+    text-align: center;
+
+    font-size: 36px;
+    font-weight: bold;
+}
+.subtitulo
+{
+    font-size: 24px;
+    font-weight: bold;
+
+    text-align: justify;
+}
+.cuerpo::first-letter
+{display: flex;
+    float:left;
+    flex-direction: row;
+
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 45px;
+
+
+
+}
+.cuerpo{
+
+    margin-top: 30px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    display: block;
+    text-align: justify;
+
+}
