@@ -47,4 +47,27 @@ class ArticuloController
 
         $this->renderer->render('Articulo.mustache', $articulo[0]);
     }
+
+    public function verarticuloporcomprobar()
+    {
+        $titulo = $_POST["titulo"] ?? '';
+        $escritor = $_POST["escritor"] ?? '';
+        $articulo = $this->model->verarticuloporcomprobar($titulo,$escritor);
+       $this->renderer->render('Articulo.mustache', $articulo[0]);
+
+    }
+    public function default()
+    {
+        Redirect::doIt('/');
+    }
+
+
+
+
+
+
+
+
+
+
 }

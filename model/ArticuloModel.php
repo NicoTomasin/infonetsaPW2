@@ -39,4 +39,12 @@ class ArticuloModel
         $sql = "SELECT * FROM `articulo` WHERE `id` = '$id'";
         return $this->database->query($sql);
     }
+
+
+    public function verarticuloporcomprobar($titulo,$escritor)
+    {
+        $sql = "SELECT * FROM `articulo` WHERE `titulo` = '$titulo'and`escritor`='$escritor'";
+        return $this->database->query($sql);
+
+    }
 }

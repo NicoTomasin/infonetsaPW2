@@ -48,6 +48,11 @@
                 <td>{{titulo}}</td>
                 <td>{{nombre}}</td>
                 <td>
+                 <form method="post" action="/articulo/verarticuloporcomprobar">
+                                        <input id="escritor" name="escritor" type="hidden" value="{{escritor}}">
+                                        <input id="titulo" name="titulo" type="hidden" value="{{titulo}}">
+                                        <button type="submit" class="btn-secondary">Ver</button>
+                                    </form>
                     <form method="post" action="/articulo/eliminar">
                         <input id="escritor" name="escritor" type="hidden" value="{{escritor}}">
                         <input id="titulo" name="titulo" type="hidden" value="{{titulo}}">
