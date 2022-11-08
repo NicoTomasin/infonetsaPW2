@@ -6,6 +6,7 @@ include_once('helpers/MySQlDatabase.php');
 include_once('helpers/MustacheRenderer.php');
 include_once('helpers/Logger.php');
 include_once('helpers/Router.php');
+include_once('helpers/Mailer.php');
 //--------------------------------Models----------------------------------------
 include_once ("model/RegisterModel.php");
 include_once('model/LoginModel.php');
@@ -35,6 +36,9 @@ class Configuration {
     public function getRouter() {
         return new Router($this, "home", "default");
     }
+    public function getMailer(){
+        return new Mailer();
+    }
     //--------------------------------Models----------------------------------------
     public function getLoginModel() {
         return new LoginModel($this->database);
@@ -57,7 +61,7 @@ class Configuration {
     }
    //--------------------------------Controllers----------------------------------------
     public function getRegisterController(){
-        return new RegisterController($this->view, $this->getRegisterModel());
+        return new RegisterController($this->view, $this->getRegisterModel(),$this->getMailer());
     }
     public function getAuthenticationController(){
         return new AuthenticationController($this->view, $this->getAuthenticationModel());

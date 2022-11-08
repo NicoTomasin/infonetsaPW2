@@ -1,12 +1,14 @@
 <?php
 
+
 class RegisterController {
     private $renderer;
     private $model;
-
-    public function __construct($render, $model) {
+    private $mailer;
+    public function __construct($render, $model,$mailer) {
         $this->renderer = $render;
         $this->model = $model;
+        $this->mailer = $mailer;
     }
 
     public function default() {
@@ -18,13 +20,15 @@ class RegisterController {
         $apellido = $_POST["apellido"]??'';
         $mail = $_POST["mail"]??'';
         $password = md5($_POST["password"])??'';
-        $tipo = $_POST["tipo"]??null;
+        $tipo = $_POST["tipo"]??"2";
         $res = $this->model->buscarUsuario($mail);
+        $hash = md5($mail);
         if($res){
             Redirect::doIt("/"); //yaexiste
         } else {
             $this->model->alta($nombre,$apellido,$mail,$password, $tipo);
-            Redirect::doIt("/authentication?mail=$mail");
+            $this->mailer->enviar($mail, "<a href='http://localhost/authentication/procesar?mail=$mail&hash=$hash' class='myButton'>Validar Mail</a>");
+            Redirect::doIt("/authentication");
         }
 
     }

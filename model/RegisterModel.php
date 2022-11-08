@@ -8,7 +8,7 @@ class RegisterModel {
         $this->database = $database;
     }
 
-    public function alta($nombre, $apellido, $mail, $password, $tipo=null){
+    public function alta($nombre, $apellido, $mail, $password, $tipo="2"){
         $sql = "INSERT INTO usuario(`nombre`, `apellido`, `mail`,`tipo` ) VALUES ('$nombre','$apellido','$mail', '$tipo')";
         $id = $this->database->queryResId($sql);
         $hash = md5($mail);

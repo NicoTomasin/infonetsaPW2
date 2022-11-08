@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2022 a las 04:48:09
+-- Tiempo de generación: 08-11-2022 a las 07:42:36
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -44,7 +44,8 @@ CREATE TABLE `articulo` (
 --
 
 INSERT INTO `articulo` (`id`, `titulo`, `subtitulo`, `edicion`, `producto`, `seccion`, `cuerpo`, `estado`, `escritor`) VALUES
-(5, 'Gano alguien', 'comodamente', '2022-11-02', '7', 1, 'qasdasasd', 1, 'escritor@escritor.com');
+(5, 'Gano alguien', 'comodamente', '2022-11-02', '7', 1, 'qasdasasd', 1, 'escritor@escritor.com'),
+(6, 'Gano alguien', 'comodamente', '2022-11-02', '6', 2, 'vjgjfgjfhjhjfghujfjgh', 1, 'escritor@escritor.com');
 
 -- --------------------------------------------------------
 
@@ -84,12 +85,10 @@ CREATE TABLE `login_usuario` (
 --
 
 INSERT INTO `login_usuario` (`id`, `mail`, `password`, `authCode`) VALUES
-(13, 'nsngt7@gmail.com', '202cb962ac59075b964b07152d234b70', 'e754715717ec43df5e9c0fdd90354cc7'),
 (14, 'admin@admin.com', '202cb962ac59075b964b07152d234b70', '64e1b8d34f425d19e1ee2ea7236d3028'),
 (15, 'lector@lector.com', '202cb962ac59075b964b07152d234b70', '85cde9ed83e14741dc2b89f3a2aa22b6'),
 (16, 'escritor@escritor.com', '202cb962ac59075b964b07152d234b70', '4fabc46c2df0f7ef9c776cc2531c184e'),
-(17, 'editor@editor', '202cb962ac59075b964b07152d234b70', 'a604122fa62c8f97bd1124eab81edc71'),
-(18, 'nsngt47@gmail.com', '202cb962ac59075b964b07152d234b70', '7aeb08011c41ffc7dae36a034828122a');
+(17, 'editor@editor', '202cb962ac59075b964b07152d234b70', 'a604122fa62c8f97bd1124eab81edc71');
 
 -- --------------------------------------------------------
 
@@ -199,8 +198,7 @@ INSERT INTO `usuario` (`id`, `mail`, `nombre`, `apellido`, `tipo`, `estado`, `te
 (14, 'admin@admin.com', 'Admin', 'Admin', '1', 1, NULL),
 (15, 'lector@lector.com', 'Lector', 'Lector', '2', 1, NULL),
 (16, 'escritor@escritor.com', 'Escritor', 'Escritor', '3', 1, NULL),
-(17, 'editor@editor', 'Editor', 'Editor', '4', 1, NULL),
-(18, 'nsngt47@gmail.com', 'Nicolas', 'Tomasin', '2', 1, NULL);
+(17, 'editor@editor', 'Editor', 'Editor', '4', 1, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -216,6 +214,12 @@ ALTER TABLE `articulo`
 -- Indices de la tabla `edicion`
 --
 ALTER TABLE `edicion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `login_usuario`
+--
+ALTER TABLE `login_usuario`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -256,7 +260,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `edicion`
@@ -292,7 +296,7 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
