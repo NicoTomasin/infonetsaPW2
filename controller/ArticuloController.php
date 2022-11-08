@@ -18,8 +18,9 @@ class ArticuloController
         $producto = $_POST["producto"] ?? '';
         $seccion = $_POST["seccion"] ?? '';
         $cuerpo = $_POST["cuerpo"] ?? '';
+        $imagen= addslashes(file_get_contents($_FILES['imagen']['tmp_name'])) ??'';
         $escritor = $_SESSION['UsrMail'];
-        $this->model->ponerEnEspera($titulo, $subtitulo, $edicion, $producto, $seccion, $cuerpo, $escritor);
+        $this->model->ponerEnEspera($titulo, $subtitulo, $edicion, $producto, $seccion, $cuerpo, $escritor,$imagen);
         Redirect::doIt('/');
     }
     public function eliminar()
@@ -44,7 +45,7 @@ class ArticuloController
     {
         $id = $_POST["id"] ?? '';
         $articulo = $this->model->buscarArticuloEspecifico($id);
-
+        $articulo[0]['imagen'] = base64_encode($articulo[0]['imagen'] );
         $this->renderer->render('Articulo.mustache', $articulo[0]);
     }
 
@@ -53,6 +54,7 @@ class ArticuloController
         $titulo = $_POST["titulo"] ?? '';
         $escritor = $_POST["escritor"] ?? '';
         $articulo = $this->model->verarticuloporcomprobar($titulo,$escritor);
+        $articulo[0]['imagen'] = base64_encode($articulo[0]['imagen'] );
        $this->renderer->render('Articulo.mustache', $articulo[0]);
 
     }
@@ -61,8 +63,12 @@ class ArticuloController
         $producto = $_GET["producto"] ?? false;
         if($producto) {
             $articulos = $this->model->buscarArticulosDeUnProducto($producto);
-            if($articulos[0]){
-                $this->renderer->render('ArticulosPorProducto.mustache', $articulos[0]);
+
+            if($articulos){
+                for($i = 0; $i < count($articulos); $i++){
+                    $articulos[$i]['imagen'] = base64_encode($articulos[$i]['imagen'] );
+                }
+                $this->renderer->render('ArticulosPorProducto.mustache', $articulos);
             }else {
                 Redirect::doIt('/');
             }

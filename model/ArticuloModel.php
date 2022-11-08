@@ -9,9 +9,9 @@ class ArticuloModel
         $this->database = $database;
     }
 
-    public function ponerEnEspera($titulo, $subtitulo, $edicion, $producto, $seccion, $cuerpo, $escritor)
+    public function ponerEnEspera($titulo, $subtitulo, $edicion, $producto, $seccion, $cuerpo, $escritor,$imagen)
     {
-        $sql = "INSERT INTO articulo(`titulo`, `subtitulo`, `edicion`, `producto`,`seccion`,`cuerpo`,`escritor`) VALUES ('$titulo', '$subtitulo', '$edicion', '$producto', '$seccion','$cuerpo','$escritor')";
+        $sql = "INSERT INTO articulo(`titulo`, `subtitulo`, `edicion`, `producto`,`seccion`,`cuerpo`,`escritor`,`imagen`) VALUES ('$titulo', '$subtitulo', '$edicion', '$producto', '$seccion','$cuerpo','$escritor','$imagen')";
         $this->database->execute($sql);
     }
     public function buscarArticulosPendientes()

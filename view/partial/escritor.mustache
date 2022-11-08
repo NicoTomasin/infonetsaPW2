@@ -1,8 +1,7 @@
-
-  <div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
+<div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
     <h2 class="fw-bold text-center py-5">Crear Nota</h2>
-    <form method="post" action="/articulo/crear">
-                        <div class="mb-4">
+    <form method="post" action="/articulo/crear" enctype="multipart/form-data">
+        <div class="mb-4">
             <label for="titulo" class="form-label">Titulo</label>
             <input type="text" class="form-control" name="titulo">
         </div>
@@ -27,19 +26,22 @@
             </select>
         </div>
         <div class="mb-4">
-          <label for="edicion" class="form-label">Edicion noticia</label>
-          <input type="date"class="form-control" name="edicion">
-      </div>
-      <div class="mb-4">
-        <label for="cuerpo" class="form-label">Cuerpo de la noticia</label>
-        <textarea name="cuerpo"class="form-control" placeholder="Cuerpo"></textarea>
-    </div>
-      
+            <label for="edicion" class="form-label">Edicion noticia</label>
+            <input type="date" class="form-control" name="edicion">
+        </div>
+        <div class="mb-4">
+            <label for="cuerpo" class="form-label">Cuerpo de la noticia</label>
+            <textarea name="cuerpo" class="form-control" placeholder="Cuerpo"></textarea>
+        </div>
+        <div class="mb-4">
+            <label for="imagen" class="form-label">Imagen</label>
+            <input type="file" class="form-control" name="imagen">
+        </div>
         <div class="d-grid">
             <button type="submit" class="btn-secondary">Crear Nota</button>
         </div>
-        
+
     </form>
 
-  </div>
+</div>
 
