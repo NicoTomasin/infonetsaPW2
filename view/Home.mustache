@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
     <title>Home</title>
-  </head>
-  <body>
+</head>
+<body>
 
-  {{^usuario}}
-      {{> header}}
-  {{/usuario}}
-  {{#usuario}}
-      {{> header}}
-      {{#esAdmin}}
-          {{> admin}}
-      {{/esAdmin}}
-      {{#esEditor}}
-          {{> editor}}
-      {{/esEditor}}
-      {{#esEscritor}}
-          {{> escritor}}
-      {{/esEscritor}}
-      {{#esLector}}
-          {{> lector}}
-      {{/esLector}}
-  {{/usuario}}
-  </body>
+{{^usuario}}
+    {{> header}}
+{{/usuario}}
 
-  {{> footer}}
+{{#usuario}}
+    {{> header}}
+    {{#esAdmin}}
+        {{> admin}}
+    {{/esAdmin}}
+    {{#esEditor}}
+        {{> editor}}
+    {{/esEditor}}
+    {{#esEscritor}}
+        {{> escritor}}
+    {{/esEscritor}}
+    {{#esLector}}
+        {{> lector}}
+    {{/esLector}}
+{{/usuario}}
+</body>
+
+{{> footer}}
 </html>
 

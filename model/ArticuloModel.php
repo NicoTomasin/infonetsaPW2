@@ -47,4 +47,11 @@ class ArticuloModel
         return $this->database->query($sql);
 
     }
+    public function buscarArticulosDeUnProducto($id)
+    {
+        $sql = "SELECT * FROM `articulo` WHERE `producto` = '$id'and`estado`=1";
+        return $this->database->query($sql);
+
+    }
+
 }

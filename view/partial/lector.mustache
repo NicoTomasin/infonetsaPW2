@@ -1,61 +1,43 @@
 <style>
-    .tftable {
-        font-size: 12px;
-        color: #333333;
-        width: 100%;
-        border-width: 1px;
-        border-color: #729ea5;
-        border-collapse: collapse;
+    .card{
+        transition: transform .2s;
     }
-
-    .tftable th {
-        font-size: 12px;
-        background-color: #acc8cc;
-        border-width: 1px;
-        padding: 8px;
-        border-style: solid;
-        border-color: #729ea5;
-        text-align: left;
+    .card:hover{
+        transform: scale(1.03)
     }
-
-    .tftable tr {
-        background-color: #ffffff;
-    }
-
-    .tftable td {
-        font-size: 12px;
-        border-width: 1px;
-        padding: 8px;
-        border-style: solid;
-        border-color: #729ea5;
-    }
-
-    .tftable tr:hover {
-        background-color: #acc8cc;
+    section{
+        margin-top: 2rem;
     }
 </style>
-<div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
-    <table class="tftable" border="1">
-        <tr>
-            <th>Producto</th>
-            <th>Seccion</th>
-            <th>Titulo</th>
-            <th>Acciones</th>
-        </tr>
-        {{#articulos}}
-            <tr>
-                <td>{{producto}}</td>
-                <td>{{seccion}}</td>
-                <td>{{titulo}}</td>
-                <td>
-                    <form method="post" action="/articulo/leer">
-                        <input id="id" name="id" type="hidden" value="{{id}}">
-                        <button type="submit" class="btn-secondary">Leer</button>
-                    </form>
-                </td>
-            </tr>
-        {{/articulos}}
-    </table>
-</div>
+<section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="mb-3">Productos</h3>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    {{#productos}}
+
+                        <div class="col-md-4 mb-3">
+
+                            <div class="card">
+                                <a href="/articulo?producto={{id}}" style="color: black; text-decoration: none" >
+                                <img class="img-fluid" alt="100%x280" src="{{logo}}">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{nombre}}</h4>
+                                    <p class="card-text">{{descripcion}}</p>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    {{/productos}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 

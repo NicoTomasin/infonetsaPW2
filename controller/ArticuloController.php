@@ -58,7 +58,19 @@ class ArticuloController
     }
     public function default()
     {
+        $producto = $_GET["producto"] ?? false;
+        if($producto) {
+            $articulos = $this->model->buscarArticulosDeUnProducto($producto);
+            if($articulos[0]){
+                $this->renderer->render('ArticulosPorProducto.mustache', $articulos[0]);
+            }else {
+                Redirect::doIt('/');
+            }
+
+    }else {
         Redirect::doIt('/');
+    }
+
     }
 
 
