@@ -40,6 +40,8 @@ class ArticuloController
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedenAcceder('ESCRITOR', "EDITOR")) {
             $id = $_POST["id"] ?? '';
             $this->model->eliminar($id);
+            //TODO:if ESCRITOR notificar que se elimino correctamente
+            //TODO:if EDITOR notificar que se elimino correctamente y notificar ESCRITOR que x EDITOR elimino su publicacion
             Redirect::doIt('/');
         } else {
             Redirect::doIt('/');
@@ -51,6 +53,7 @@ class ArticuloController
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('EDITOR')) {
             $id = $_POST["id"] ?? '';
             $this->model->publicar($id);
+            //TODO:Notificar al escritor que se publico su articulo
             Redirect::doIt('/');
         } else {
             Redirect::doIt('/');
@@ -63,6 +66,7 @@ class ArticuloController
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('EDITOR')) {
             $id = $_POST["id"] ?? '';
             $this->model->corregir($id);
+            //TODO: Notificar a escritor que se necesita edicion
             Redirect::doIt('/');
         } else {
             Redirect::doIt('/');
@@ -124,6 +128,24 @@ class ArticuloController
 
     }
 
+    public function misarticulos()
+    {
+        if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('ESCRITOR')) {
+            $escritor = $_POST["escritor"] ?? '';
+            $articulos = $this->model->verMisArticulos($escritor);
+            if ($articulos) {
+                for ($i = 0; $i < count($articulos); $i++) {
+                    $articulos[$i]['imagen'] = base64_encode($articulos[$i]['imagen']);
+                }
+                $this->renderer->render('MisArticulos.mustache', $articulos);
+            } else {
+                Redirect::doIt('/');
+            }
+        } else {
+            Redirect::doIt('/');
+        }
+    }
+
     public function default()
     {
         $producto = $_GET["producto"] ?? false;
@@ -139,24 +161,6 @@ class ArticuloController
                 Redirect::doIt('/');
             }
 
-        } else {
-            Redirect::doIt('/');
-        }
-    }
-
-    public function misarticulos()
-    {
-        if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('ESCRITOR')) {
-            $escritor = $_POST["escritor"] ?? '';
-            $articulos = $this->model->verMisArticulos($escritor);
-            if ($articulos) {
-                for ($i = 0; $i < count($articulos); $i++) {
-                    $articulos[$i]['imagen'] = base64_encode($articulos[$i]['imagen']);
-                }
-                $this->renderer->render('MisArticulos.mustache', $articulos);
-            } else {
-                Redirect::doIt('/');
-            }
         } else {
             Redirect::doIt('/');
         }
