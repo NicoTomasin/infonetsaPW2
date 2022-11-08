@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2022 a las 07:42:36
+-- Tiempo de generación: 08-11-2022 a las 20:12:49
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -99,18 +99,20 @@ INSERT INTO `login_usuario` (`id`, `mail`, `password`, `authCode`) VALUES
 CREATE TABLE `producto` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `tipo` varchar(100) NOT NULL
+  `tipo` varchar(100) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
+  `logo` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id`, `nombre`, `tipo`) VALUES
-(5, 'Clarin', '1'),
-(6, 'Ole', '1'),
-(7, 'La Nacion', '1'),
-(8, 'Miradas', '2');
+INSERT INTO `producto` (`id`, `nombre`, `tipo`, `descripcion`, `logo`) VALUES
+(5, 'Clarin', '1', 'Clarín es un periódico argentino de tendencia conservadora con sede en la ciudad de Buenos Aires. Fue fundado el 28 de agosto de 1945, por Roberto Noble. La versión digital del periódico Clarin.com es el sexto periódico digital en español más consultado del mundo con 6 948 000 de usuarios únicos en septiembre de 2020', 'https://www.clarin.com/static/CLAClarin/images/Clarin-sahreing-fbk.png'),
+(6, 'Ole', '1', 'Olé es un diario argentino de deportes, editado en Buenos Aires desde el 23 de mayo de 1996, por el Grupo Clarín en formato tabloide', 'https://play-lh.googleusercontent.com/OfbdHHNVK5hRhKwthUr3zG4GdjsusEWMuulPCLU9eqT0kOhnOjdRj3Vw2whKWQ1srQ'),
+(7, 'La Nacion', '1', 'La Nación es un tradicional periódico argentino de tendencia conservadora con sede en la Ciudad de Buenos Aires. La expresión también es parte del nombre del canal de televisión La Nación + y de la tarjeta Club La Nación', 'https://play-lh.googleusercontent.com/ifqvCKTdx6-o0ocKkUwd4XbXLx_KbmccG2ubMHJCwjdsor0OzZITSWU9qYdfsv1Aq16o'),
+(8, 'Miradas', '2', 'Somos una empresa pionera en el mercado peruano en la difusión, promoción y reconocimiento del emprendimiento y el talento de la gastronomía peruana y de profesionales del turismo. Todo este trabajo forma parte de Marca Perú, la estrategia oficial de promoción del Perú en el extranjero, que transmite con eficiencia la propuesta de valor de nuestro país. Nuestra empresa tiene la licencia de Marca Perú desde el 28 de marzo de 2017.', 'https://pbs.twimg.com/profile_images/1283838715073363971/st1g9rp8_400x400.jpg');
 
 -- --------------------------------------------------------
 
