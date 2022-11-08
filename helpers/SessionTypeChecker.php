@@ -1,7 +1,6 @@
 <?php
 
 class SessionTypeChecker{
-    //SessionTypeChecker::puedeAcceder('ADMIN')
     public static function puedeAcceder($usuarioQuePuedeAcceder){
         switch ($usuarioQuePuedeAcceder) {
             case 'ADMIN':
@@ -23,4 +22,12 @@ class SessionTypeChecker{
                 }   return false;
         }
     }
+    public static function puedenAcceder($usuarioQuePuedeAcceder1,$usuarioQuePuedeAcceder2 ){
+        if(SessionTypeChecker::puedeAcceder($usuarioQuePuedeAcceder1) || SessionTypeChecker::puedeAcceder($usuarioQuePuedeAcceder2)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }
