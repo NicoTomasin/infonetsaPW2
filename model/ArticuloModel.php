@@ -16,22 +16,37 @@ class ArticuloModel
     }
     public function buscarArticulosPendientes()
     {
-        $sql = "SELECT articulo.escritor, articulo.titulo, producto.nombre FROM `articulo` join `producto` WHERE articulo.producto = producto.id AND articulo.estado = 0";
+        $sql = "SELECT articulo.escritor, articulo.titulo, producto.nombre, articulo.cuerpo, articulo.imagen, articulo.id FROM `articulo` join `producto` WHERE articulo.producto = producto.id AND articulo.estado = 0";
         return $this->database->query($sql);
     }
-    public function eliminar($titulo, $escritor)
+    public function eliminar($id)
     {
-        $sql = "DELETE FROM articulo WHERE `titulo` = '$titulo' AND `escritor` = '$escritor'";
+        $sql = "DELETE FROM articulo WHERE `id` = '$id'";
         $this->database->execute($sql);
     }
-    public function publicar($titulo, $escritor)
+    public function ponerEnEsperaDespuesDeEditar($titulo, $subtitulo, $cuerpo, $imagen, $id)
     {
-        $sql = "UPDATE articulo SET `estado` = 1 WHERE `titulo` = '$titulo' AND `escritor` = '$escritor'";
+        $sql = "UPDATE articulo SET `titulo` = '$titulo', `subtitulo`= '$subtitulo',`cuerpo` = '$cuerpo',`imagen` = '$imagen', `estado` = 0 WHERE `id` = '$id'";
+        $this->database->execute($sql);
+    }
+    public function publicar($id)
+    {
+        $sql = "UPDATE articulo SET `estado` = 1 WHERE `id` = '$id'";
+        $this->database->execute($sql);
+    }
+    public function corregir($id)
+    {
+        $sql = "UPDATE articulo SET `estado` = 2 WHERE `id` = '$id'";
         $this->database->execute($sql);
     }
     public function buscarTodosLosArticulosActivos()
     {
         $sql = "SELECT articulo.id AS 'id', producto.nombre AS 'producto', secciones.nombre AS 'seccion', articulo.titulo FROM `producto` JOIN `articulo` JOIN `secciones` WHERE articulo.producto = producto.id AND secciones.id = articulo.seccion AND articulo.estado = 1";
+        return $this->database->query($sql);
+    }
+    public function verarticulosparaeditar($escritor)
+    {
+        $sql = "SELECT articulo.escritor, articulo.titulo, producto.nombre, articulo.cuerpo, articulo.imagen, articulo.id FROM `articulo` join `producto` WHERE articulo.producto = producto.id AND articulo.estado = 2 AND articulo.escritor = '$escritor'";
         return $this->database->query($sql);
     }
     public function buscarArticuloEspecifico($id)
@@ -41,9 +56,9 @@ class ArticuloModel
     }
 
 
-    public function verarticuloporcomprobar($titulo,$escritor)
+    public function verarticuloporcomprobar($id)
     {
-        $sql = "SELECT * FROM `articulo` WHERE `titulo` = '$titulo'and`escritor`='$escritor'";
+        $sql = "SELECT * FROM `articulo` WHERE `id` = '$id'";
         return $this->database->query($sql);
 
     }

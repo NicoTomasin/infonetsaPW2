@@ -38,6 +38,9 @@ class UsuarioController{
     {
         $datos =  $this->datosDelUsuario();
         $datos['articulosPendientes'] =  $this->modelArticulos->buscarArticulosPendientes();
+        for($i = 0; $i < count($datos['articulosPendientes']); $i++){
+            $datos['articulosPendientes'][$i]['imagen'] = base64_encode($datos['articulosPendientes'][$i]['imagen'] );
+        }
         return $datos;
 
     }
