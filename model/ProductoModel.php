@@ -7,9 +7,14 @@ class ProductoModel
     public function __construct($database) {
         $this->database = $database;
     }
-    public function agregarProducto($nombre, $tipo)
+    public function agregarProducto($nombre, $tipo, $descripcion, $logo)
     {
-        $sql = "INSERT INTO producto(`nombre`, `tipo`) VALUES ('$nombre','$tipo')";
+        $sql = "INSERT INTO producto(`nombre`, `tipo`,`descripcion`,`logo`) VALUES ('$nombre','$tipo', '$descripcion','$logo')";
+        $this->database->execute($sql);
+    }
+    public function eliminarProducto($id)
+    {
+        $sql = "DELETE FROM producto WHERE `id` = '$id'";
         $this->database->execute($sql);
     }
     public function buscarTiposDeProductos()

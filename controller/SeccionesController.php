@@ -1,6 +1,6 @@
 <?php
 
-class ProductoController
+class SeccionesController
 {
     private $renderer;
     private $model;
@@ -14,16 +14,13 @@ class ProductoController
     public function agregar()
     {
         $nombre = $_POST["nombre"] ?? '';
-        $tipo = $_POST["tipo"] ?? '';
-        $logo = $_POST["logo"] ?? '';
-        $descripcion = $_POST["descripcion"] ?? '';
-        $this->model->agregarProducto($nombre, $tipo,$descripcion,$logo);
+        $this->model->agregarSeccion($nombre);
         Redirect::doIt('/');
     }
     public function eliminar()
     {
-        $id = $_POST["id"] ?? '';
-        $this->model->eliminarProducto($id);
+        $nombre = $_POST["nombre"] ?? '';
+        $this->model->eliminarSeccion($nombre);
         Redirect::doIt('/');
     }
 

@@ -14,6 +14,7 @@ include_once('model/AuthenticationModel.php');
 include_once('model/UsuarioModel.php');
 include_once('model/ArticuloModel.php');
 include_once('model/ProductoModel.php');
+include_once('model/SeccionesModel.php');
 //--------------------------------Controllers----------------------------------------
 include_once('controller/HomeController.php');
 include_once('controller/RegisterController.php');
@@ -22,6 +23,7 @@ include_once('controller/AuthenticationController.php');
 include_once('controller/ArticuloController.php');
 include_once('controller/UsuarioController.php');
 include_once('controller/ProductoController.php');
+include_once('controller/SeccionesController.php');
 
 include_once ('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -59,6 +61,10 @@ class Configuration {
     {
         return new ProductoModel($this->database);
     }
+    private function getSeccionesModel()
+    {
+        return new SeccionesModel($this->database);
+    }
    //--------------------------------Controllers----------------------------------------
     public function getRegisterController(){
         return new RegisterController($this->view, $this->getRegisterModel(),$this->getMailer());
@@ -73,7 +79,7 @@ class Configuration {
         return new ArticuloController($this->view,$this->getArticuloModel());
     }
     public function getUsuarioController() {
-        return new UsuarioController($this->view,$this->getUsuarioModel(),$this->getArticuloModel(),$this->getProductoModel());
+        return new UsuarioController($this->view,$this->getUsuarioModel(),$this->getArticuloModel(),$this->getProductoModel(),$this->getSeccionesModel());
     }
     public function getHomeController() {
         return new homeController($this->view, $this->getUsuarioController());
@@ -81,7 +87,9 @@ class Configuration {
     public function getProductoController() {
         return new ProductoController($this->view, $this->getProductoModel());
     }
-
+    public function getSeccionesController() {
+        return new SeccionesController($this->view, $this->getSeccionesModel());
+    }
 
 
 

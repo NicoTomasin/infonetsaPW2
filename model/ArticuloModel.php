@@ -54,8 +54,6 @@ class ArticuloModel
         $sql = "SELECT * FROM `articulo` WHERE `id` = '$id'";
         return $this->database->query($sql);
     }
-
-
     public function verarticuloporcomprobar($id)
     {
         $sql = "SELECT * FROM `articulo` WHERE `id` = '$id'";
@@ -65,6 +63,12 @@ class ArticuloModel
     public function buscarArticulosDeUnProducto($id)
     {
         $sql = "SELECT * FROM `articulo` WHERE `producto` = '$id'and`estado`=1";
+        return $this->database->query($sql);
+
+    }
+    public function verMisArticulos($escritor)
+    {
+        $sql = "SELECT * FROM `articulo` WHERE `escritor` = '$escritor'";
         return $this->database->query($sql);
 
     }

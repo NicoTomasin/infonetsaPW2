@@ -44,6 +44,14 @@
               <input type="text" class="form-control" name="nombre">
           </div>
           <div class="mb-4">
+              <label for="descripcion" class="form-label">Descripcion</label>
+              <input type="text" class="form-control" name="descripcion">
+          </div>
+          <div class="mb-4">
+              <label for="logo" class="form-label">URL Logo</label>
+              <input type="text" class="form-control" name="logo">
+          </div>
+          <div class="mb-4">
               <label for="fecha" class="form-label">Tipo</label>
               <select class="form-control" name="tipo" id="tipo">
                   {{#tiposDeProductos}}
@@ -53,6 +61,50 @@
           </div>
           <div class="d-grid">
               <button type="submit" class="btn-secondary">Agregar producto</button>
+          </div>
+      </form>
+  </div>
+  <div id="login_form" class="col p-5">
+      <h2 class="fw-bold text-center py-5">Eliminar Producto</h2>
+      <form method="post" action="/producto/eliminar">
+          <div class="mb-4">
+              <label for="fecha" class="form-label">Producto</label>
+              <select class="form-control" name="id" id="id">
+                  {{#productos}}
+                      <option value={{id}}>{{nombre}}</option>
+                  {{/productos}}
+              </select>
+          </div>
+          <div class="d-grid">
+              <button type="submit" class="btn-secondary">Eliminar Producto</button>
+          </div>
+      </form>
+  </div>
+  <div id="login_form" class="col p-5">
+      <h2 class="fw-bold text-center py-5">Agregar Seccion</h2>
+      <form method="post" action="/secciones/agregar">
+          <div class="mb-4">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" name="nombre">
+          </div>
+          <div class="d-grid">
+              <button type="submit" class="btn-secondary">Agregar Seccion</button>
+          </div>
+      </form>
+  </div>
+  <div id="login_form" class="col p-5">
+      <h2 class="fw-bold text-center py-5">Eliminar Seccion</h2>
+      <form method="post" action="/secciones/eliminar">
+          <div class="mb-4">
+              <label for="fecha" class="form-label">Nombre</label>
+              <select class="form-control" name="nombre" id="nombre">
+                  {{#secciones}}
+                      <option value={{nombre}}>{{nombre}}</option>
+                  {{/secciones}}
+              </select>
+          </div>
+          <div class="d-grid">
+              <button type="submit" class="btn-secondary">Eliminar Seccion</button>
           </div>
       </form>
   </div>

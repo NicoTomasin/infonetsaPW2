@@ -83,7 +83,6 @@ class ArticuloController
         }else {
             Redirect::doIt('/');
         }
-
     }
     public function default()
     {
@@ -103,7 +102,19 @@ class ArticuloController
     }else {
         Redirect::doIt('/');
     }
-
+    }
+    public function misarticulos()
+    {
+        $escritor= $_POST["escritor"] ?? '';
+        $articulos = $this->model->verMisArticulos($escritor);
+        if($articulos){
+            for($i = 0; $i < count($articulos); $i++){
+                $articulos[$i]['imagen'] = base64_encode($articulos[$i]['imagen'] );
+            }
+            $this->renderer->render('MisArticulos.mustache', $articulos);
+        }else {
+            Redirect::doIt('/');
+        }
     }
 
 

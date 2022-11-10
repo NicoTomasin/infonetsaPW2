@@ -6,17 +6,19 @@ class UsuarioController{
     private $model;
     private $modelArticulos;
     private $modelProducto;
-    public function __construct($view,$model,$modelArticulos,$modelProducto) {
+    private $modelSecciones;
+    public function __construct($view,$model,$modelArticulos,$modelProducto,$modelSecciones) {
         $this->view = $view;
         $this->model = $model;
         $this->modelArticulos = $modelArticulos;
         $this->modelProducto = $modelProducto;
+        $this->modelSecciones = $modelSecciones;
     }
     public function datosDelUsuario()
     {
         $datos['usuario'] =  $this->model->buscarDatosDelUsuario($_SESSION['UsrMail']);
         $datos['tiposDeProductos'] =  $this->modelProducto->buscarTiposDeProductos();
-        $datos['secciones'] =  $this->modelProducto->buscarSecciones();
+        $datos['secciones'] =  $this->modelSecciones->buscarSecciones();
         $datos['productos'] =  $this->modelProducto->buscarProductos();
         switch ($datos['usuario'][0]['tipo']){
             case '1':
@@ -40,6 +42,10 @@ class UsuarioController{
         $datos['articulosPendientes'] =  $this->modelArticulos->buscarArticulosPendientes();
         for($i = 0; $i < count($datos['articulosPendientes']); $i++){
             $datos['articulosPendientes'][$i]['imagen'] = base64_encode($datos['articulosPendientes'][$i]['imagen'] );
+        }
+        $datos['articulosActivos'] =  $this->modelArticulos->buscarTodosLosArticulosActivos();
+        for($i = 0; $i < count($datos['articulosActivos']); $i++){
+            $datos['articulosActivos'][$i]['imagen'] = base64_encode($datos['articulosActivos'][$i]['imagen'] );
         }
         return $datos;
 
