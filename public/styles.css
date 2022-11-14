@@ -19,6 +19,7 @@
 }
 #login_form{
     background-color: rgba(255,255,255,0.7);
+    padding: 0px 280px 80px 280px !important;
 }
 
 #slogan{

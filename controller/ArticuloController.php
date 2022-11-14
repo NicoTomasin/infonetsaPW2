@@ -20,8 +20,9 @@ class ArticuloController
             $producto = $_POST["producto"] ?? '';
             $seccion = $_POST["seccion"] ?? '';
             $cuerpo = $_POST["cuerpo"] ?? '';
-            $imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name'])) ?? '';
+            $imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name'])) ?? null;
             $escritor = $_SESSION['UsrMail'];
+
             $id = $_POST["id"] ?? false;
             if ($id) {
                 $this->model->ponerEnEsperaDespuesDeEditar($titulo, $subtitulo, $cuerpo, $imagen, $id);
