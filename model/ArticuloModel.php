@@ -11,8 +11,11 @@ class ArticuloModel
 
     public function ponerEnEspera($titulo, $subtitulo, $edicion, $producto, $seccion, $cuerpo, $escritor,$imagen)
     {
-        $sql = "INSERT INTO articulo(`titulo`, `subtitulo`, `edicion`, `producto`,`seccion`,`cuerpo`,`escritor`,`imagen`) VALUES ('$titulo', '$subtitulo', '$edicion', '$producto', '$seccion','$cuerpo','$escritor','$imagen')";
-        $this->database->execute($sql);
+        $this->database->executeStatement($titulo, $subtitulo, $edicion, $producto, $seccion, $cuerpo, $escritor, $imagen);
+    }
+    public function ponerEnEsperaDespuesDeEditar($titulo, $subtitulo, $cuerpo, $imagen, $id)
+    {
+        $this->database->executeStatementDespuesDeEditar($titulo, $subtitulo, $cuerpo, $imagen, $id);
     }
     public function buscarArticulosPendientes()
     {
@@ -24,11 +27,7 @@ class ArticuloModel
         $sql = "DELETE FROM articulo WHERE `id` = '$id'";
         $this->database->execute($sql);
     }
-    public function ponerEnEsperaDespuesDeEditar($titulo, $subtitulo, $cuerpo, $imagen, $id)
-    {
-        $sql = "UPDATE articulo SET `titulo` = '$titulo', `subtitulo`= '$subtitulo',`cuerpo` = '$cuerpo',`imagen` = '$imagen', `estado` = 0 WHERE `id` = '$id'";
-        $this->database->execute($sql);
-    }
+
     public function publicar($id)
     {
         $sql = "UPDATE articulo SET `estado` = 1 WHERE `id` = '$id'";

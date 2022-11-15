@@ -4,15 +4,15 @@
         <form method="post" action="/articulo/crear" enctype="multipart/form-data">
             <div class="mb-4">
                 <label for="titulo" class="form-label">Titulo</label>
-                <input type="text" class="form-control" name="titulo">
+                <input type="text" class="form-control" name="titulo" required>
             </div>
             <div class="mb-4">
                 <label for="subtitulo" class="form-label">SubTitulo</label>
-                <input type="text" class="form-control" name="subtitulo">
+                <input type="text" class="form-control" name="subtitulo" required>
             </div>
             <div class="mb-4">
                 <label for="fecha" class="form-label">Producto a publicar</label>
-                <select class="form-control" name="producto" id="producto">
+                <select class="form-control" name="producto" id="producto" required>
                     {{#productos}}
                         <option value={{id}}>{{nombre}}</option>
                     {{/productos}}
@@ -20,7 +20,7 @@
             </div>
             <div class="mb-4">
                 <label for="fecha" class="form-label">Seccion</label>
-                <select class="form-control" name="seccion" id="seccion">
+                <select class="form-control" name="seccion" id="seccion" required>
                     {{#secciones}}
                         <option value={{id}}>{{nombre}}</option>
                     {{/secciones}}
@@ -28,15 +28,15 @@
             </div>
             <div class="mb-4">
                 <label for="edicion" class="form-label">Edicion noticia</label>
-                <input type="date" class="form-control" name="edicion">
+                <input type="date" class="form-control" name="edicion" required>
             </div>
             <div class="mb-4">
                 <label for="cuerpo" class="form-label">Cuerpo de la noticia</label>
-                <textarea name="cuerpo" class="form-control" placeholder="Cuerpo"></textarea>
+                <textarea name="cuerpo" class="form-control" placeholder="Cuerpo" required></textarea>
             </div>
             <div class="mb-4">
                 <label for="imagen" class="form-label">Imagen</label>
-                <input type="file" class="form-control" name="imagen">
+                <input type="file" class="form-control" name="imagen" required>
             </div>
             <div class="d-grid">
                 <button type="submit" class="btn-secondary">Crear Nota</button>

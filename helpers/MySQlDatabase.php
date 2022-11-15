@@ -34,4 +34,16 @@ class MySQlDatabase {
         $last_id = mysqli_insert_id($this->conexion);
         return $last_id;
     }
+    public function executeStatement($titulo, $subtitulo, $edicion, $producto, $seccion, $cuerpo, $escritor, $imagen) {
+        $sql = "INSERT INTO articulo(`titulo`, `subtitulo`, `edicion`, `producto`,`seccion`,`cuerpo`,`escritor`,`imagen`) VALUES (?, ?, '$edicion', ?, ?, ?, ?, '$imagen');";
+        $stmt =  $this->conexion->prepare($sql);
+        $stmt->bind_param("ssssss", $titulo, $subtitulo, $producto, $seccion, $cuerpo, $escritor);
+        $stmt->execute();
+    }
+    public function executeStatementDespuesDeEditar($titulo, $subtitulo, $cuerpo, $imagen, $id) {
+        $sql = "UPDATE articulo SET `titulo` = ?, `subtitulo`= ?,`cuerpo` = ?,`imagen` = '$imagen', `estado` = 0 WHERE `id` = '$id'";
+        $stmt =  $this->conexion->prepare($sql);
+        $stmt->bind_param("sss", $titulo, $subtitulo,$cuerpo);
+        $stmt->execute();
+    }
 }
