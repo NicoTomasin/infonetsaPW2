@@ -152,7 +152,7 @@ class ArticuloController
 
     public function default()
     {
-        $producto = $_GET["producto"] ?? false;
+        $producto = $_GET["seccion"] ?? false;
         if ($producto) {
             $articulos = $this->model->buscarArticulosDeUnProducto($producto);
 

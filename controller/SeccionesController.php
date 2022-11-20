@@ -23,6 +23,16 @@ class SeccionesController
         $this->model->eliminarSeccion($nombre);
         Redirect::doIt('/');
     }
+    public function default()
+    {
+
+        $producto = $_GET["producto"] ?? '';
+        $secciones=$this->model->seccionesporproducto($producto);
+        $this->renderer->render("SeccionesDelProducto.mustache",$secciones);
+
+
+    }
+
 
 
 }

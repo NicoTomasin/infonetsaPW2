@@ -24,4 +24,11 @@ class SeccionesModel
         $sql = "SELECT * FROM `secciones`";
         return $this->database->query($sql);
     }
+
+
+    public  function seccionesporproducto($producto)
+    {  $sql = "SELECT secciones.nombre, secciones.id FROM `secciones`inner JOIN `producto`on secciones.idproducto=producto.id where secciones.idproducto='$producto'";
+        return $this->database->query($sql);
+
+    }
 }

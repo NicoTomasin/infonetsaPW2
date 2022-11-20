@@ -61,7 +61,8 @@ class ArticuloModel
     }
     public function buscarArticulosDeUnProducto($id)
     {
-        $sql = "SELECT * FROM `articulo` WHERE `producto` = '$id'and`estado`=1";
+        $sql = "SELECT articulo.id,articulo.titulo,articulo.subtitulo,articulo.edicion,articulo.producto,articulo.seccion,articulo.cuerpo,articulo.estado,articulo.escritor,articulo.imagen 
+        FROM `articulo` inner join `producto` on articulo.producto=producto.id WHERE `seccion` = '$id'and`estado`=1";
         return $this->database->query($sql);
 
     }
