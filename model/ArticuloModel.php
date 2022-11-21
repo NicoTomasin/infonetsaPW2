@@ -72,5 +72,13 @@ class ArticuloModel
         return $this->database->query($sql);
 
     }
+    public function buscarArticulosdeunasecciondeunaediciondeunproducto($producto,$edicion,$seccion)
+    {
+        $sql = "SELECT * FROM `articulo` where `edicion`='$edicion' and `producto`='$producto' and `seccion`='$seccion'";
+        return $this->database->query($sql);
+
+    }
+
+
 
 }

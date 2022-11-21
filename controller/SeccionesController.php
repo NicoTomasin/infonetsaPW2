@@ -27,7 +27,7 @@ class SeccionesController
     {
         $edicion= $_POST["edicion"] ?? '';
         $producto = $_POST["producto"] ?? '';
-        $secciones=$this->model->seccionesporproducto($producto);
+        $secciones=$this->model->seccionesporproducto($producto,$edicion);
         $this->renderer->render("SeccionesDelProducto.mustache",$secciones);
     }
 

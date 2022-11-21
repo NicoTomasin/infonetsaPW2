@@ -20,9 +20,9 @@ class ArticuloController
             $producto = $_POST["producto"] ?? '';
             $seccion = $_POST["seccion"] ?? '';
             $cuerpo = $_POST["cuerpo"] ?? '';
-            if($_FILES){
+            if ($_FILES) {
                 $imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
-            } else{
+            } else {
                 $imagen = null;
             }
             $escritor = $_SESSION['UsrMail'];
@@ -149,6 +149,55 @@ class ArticuloController
             Redirect::doIt('/');
         }
     }
+
+    public function vista()
+    {
+        $producto = $_POST["producto"] ?? false;
+        $edicion = $_POST["edicion"] ?? false;
+        $seccion = $_POST["id"] ?? false;
+
+
+        if ($producto) {
+            if ($edicion) {
+                if ($seccion) {
+                    $articulos = $this->model->buscarArticulosdeunasecciondeunaediciondeunproducto($producto, $edicion, $seccion);
+
+
+                    if ($articulos) {
+                        for ($i = 0; $i < count($articulos); $i++) {
+                            $articulos[$i]['imagen'] = base64_encode($articulos[$i]['imagen']);
+                        }
+                        $this->renderer->render('ArticulosPorProducto.mustache',$articulos );
+
+
+                    }else {
+                        Redirect::doIt('/');
+                    }
+                }
+            }
+        }
+    }
+
+
+    /*  {
+         $producto = $_POST["seccion"] ?? false;
+         if ($producto) {
+             $articulos = $this->model->buscarArticulosDeUnProducto($producto);
+
+             if ($articulos) {
+                 for ($i = 0; $i < count($articulos); $i++) {
+                     $articulos[$i]['imagen'] = base64_encode($articulos[$i]['imagen']);
+                 }
+ $this->renderer->render('ArticulosPorProducto.mustache', $articulos);
+ } else {
+     Redirect::doIt('/');
+ }
+
+ } else {
+     Redirect::doIt('/');
+ }
+ }*/
+
 
     public function default()
     {
