@@ -218,4 +218,17 @@ class ArticuloController
             Redirect::doIt('/');
         }
     }
+
+    public function dosArticulosRandom()
+    {
+        $articulos = $this->model->buscarDosArticulosRandom();
+
+        if ($articulos) {
+            for ($i = 0; $i < count($articulos); $i++) {
+                $articulos[$i]['imagen'] = base64_encode($articulos[$i]['imagen']);
+            }
+            return $articulos;
+
+        }
+    }
 }

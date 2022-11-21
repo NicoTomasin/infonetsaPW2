@@ -14,7 +14,9 @@ class EdicionesController
     public function default()
     {
         $producto = $_GET["producto"] ?? '';
-        $this->renderer->render('Ediciones.mustache', $this->model->buscarEdicionesDeUnProducto($producto));
+        $data["ediciones"] = $this->model->buscarEdicionesDeUnProducto($producto);
+        $data["usuario"] = $_SESSION['UsrMail'];
+        $this->renderer->render('Ediciones.mustache', $data);
     }
 }
 
