@@ -29,6 +29,10 @@
                                     <p class="card-text">{{descripcion}}</p>
                                 </div>
                                 </a>
+                                <form method="post" action="/comprar/suscripcion">
+                                    <input id="producto" name="producto" type="hidden" value="{{id}}">
+                                    <button type="submit" class="col-12">Suscribirse</button>
+                                </form>
                             </div>
                         </div>
                     {{/productos}}

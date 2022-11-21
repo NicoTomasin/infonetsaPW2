@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -8,19 +7,45 @@
 </head>
 <body>
 <style type="text/css">
-    .tftable {font-size:12px;color:#fbfbfb;width:100%;border-width: 1px;border-color: #686767;border-collapse: collapse;}
-    .tftable th {font-size:12px;background-color:#171515;border-width: 1px;padding: 8px;border-style: solid;border-color: #686767;text-align:left;}
-    .tftable tr {background-color:#2f2f2f;}
-    .tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #686767;}
-    .tftable tr:hover {background-color:#171515;}
+    .tftable {
+        font-size: 12px;
+        color: #fbfbfb;
+        width: 100%;
+        border-width: 1px;
+        border-color: #686767;
+        border-collapse: collapse;
+    }
+
+    .tftable th {
+        font-size: 12px;
+        background-color: #171515;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #686767;
+        text-align: left;
+    }
+
+    .tftable tr {
+        background-color: #2f2f2f;
+    }
+
+    .tftable td {
+        font-size: 12px;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #686767;
+    }
+
+    .tftable tr:hover {
+        background-color: #171515;
+    }
 </style>
-    {{> header}}
+{{> header}}
 
 
 <section class="pt-5 pb-5">
-
-
-
 
 
     <div class="container">
@@ -31,15 +56,31 @@
             </div>
             <div class="col-12">
                 <table class="tftable" border="1">
-                    <tr><th>Edicion</th><th>Cantidad de articulos</th><th>Secciones</th><th>Acciones</th></tr>
+                    <tr>
+                        <th>Edicion</th>
+                        <th>Cantidad de articulos</th>
+                        <th>Secciones</th>
+                        <th>Acciones</th>
+                    </tr>
                     {{#.}}
-                        <tr><td>{{edicion}}</td><td>{{cantidadArticulos}}</td><td>{{#secciones}} {{nombre}},{{/secciones}}</td><td> <form method="post" action="/secciones">
-                            <input id="edicion" name="edicion" type="hidden" value="{{edicion}}">
-                            <input id="producto" name="producto" type="hidden" value="{{producto}}">
-                            <button type="submit" class="col-12">Ver</button>
-                        </form></td></tr>
+                        <tr>
+                            <td>{{edicion}}</td>
+                            <td>{{cantidadArticulos}}</td>
+                            <td>{{#secciones}} {{nombre}}, {{/secciones}}</td>
+                            <td>
+                                <form method="post" action="/secciones">
+                                    <input id="edicion" name="edicion" type="hidden" value="{{edicion}}">
+                                    <input id="producto" name="producto" type="hidden" value="{{producto}}">
+                                    <button type="submit" class="col-12">Ver</button>
+                                </form>
+                                <form method="post" action="/comprar/edicion">
+                                    <input id="edicion" name="edicion" type="hidden" value="{{edicion}}">
+                                    <input id="producto" name="producto" type="hidden" value="{{producto}}">
+                                    <button type="submit" class="col-12">Comprar</button>
+                                </form>
+                            </td>
+                        </tr>
                     {{/.}}
-
                 </table>
             </div>
         </div>
