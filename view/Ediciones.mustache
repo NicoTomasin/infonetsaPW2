@@ -1,8 +1,60 @@
-{{#.}}
-    <form method="post" action="/secciones">
-        <input id="edicion" name="edicion" type="hidden" value="{{edicion}}">
-        <input id="producto" name="producto" type="hidden" value="{{producto}}">
-        <button type="submit">{{edicion}}</button>
-    </form>
 
-{{/.}}
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Home</title>
+</head>
+<body>
+<style type="text/css">
+    .tftable {font-size:12px;color:#fbfbfb;width:100%;border-width: 1px;border-color: #686767;border-collapse: collapse;}
+    .tftable th {font-size:12px;background-color:#171515;border-width: 1px;padding: 8px;border-style: solid;border-color: #686767;text-align:left;}
+    .tftable tr {background-color:#2f2f2f;}
+    .tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #686767;}
+    .tftable tr:hover {background-color:#171515;}
+</style>
+    {{> header}}
+
+
+<section class="pt-5 pb-5">
+
+
+
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-6">
+                <h3 class="mb-3">Ediciones</h3>
+            </div>
+            <div class="col-12">
+                <table class="tftable" border="1">
+                    <tr><th>Edicion</th><th>Cantidad de articulos</th><th>Secciones</th><th>Acciones</th></tr>
+                    {{#.}}
+                        <tr><td>{{edicion}}</td><td>{{cantidadArticulos}}</td><td>{{#secciones}} {{nombre}},{{/secciones}}</td><td> <form method="post" action="/secciones">
+                            <input id="edicion" name="edicion" type="hidden" value="{{edicion}}">
+                            <input id="producto" name="producto" type="hidden" value="{{producto}}">
+                            <button type="submit" class="col-12">Ver</button>
+                        </form></td></tr>
+                    {{/.}}
+
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{{> footer}}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
