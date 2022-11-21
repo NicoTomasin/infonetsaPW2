@@ -11,6 +11,7 @@ class homeController {
     }
     public function default() {
         if(isset($_SESSION['UsrMail'])){
+
             if(SessionTypeChecker::puedeAcceder('EDITOR')){
                 $this->view->render('Home.mustache', $this->controllerUsuario->datosDelUsuarioEditor($_SESSION['UsrMail']));
             }else if(SessionTypeChecker::puedeAcceder('LECTOR')){

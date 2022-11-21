@@ -20,9 +20,8 @@
              <a href='/login'  class='w3-bar-item w3-button w3-padding-large w3-hide-small'>Login</a>
              <a href='/register' class='w3-bar-item w3-button w3-padding-large w3-hide-small'>Registrarse</a>
         {{/.}}
-        {{#.}}
-              <a href='/'  class='w3-bar-item w3-button w3-padding-large w3-hide-small'>{{0.mail}}</a>
+        {{#usuario}}
               <a href='/login/logout' class='w3-bar-item w3-button w3-padding-large w3-hide-small'>Cerrar Sesion</a>
-        {{/.}}
+        {{/usuario}}
     </div>
 </div>
