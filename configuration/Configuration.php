@@ -15,6 +15,7 @@ include_once('model/UsuarioModel.php');
 include_once('model/ArticuloModel.php');
 include_once('model/ProductoModel.php');
 include_once('model/SeccionesModel.php');
+include_once('model/EdicionesModel.php');
 //--------------------------------Controllers----------------------------------------
 include_once('controller/HomeController.php');
 include_once('controller/RegisterController.php');
@@ -24,6 +25,7 @@ include_once('controller/ArticuloController.php');
 include_once('controller/UsuarioController.php');
 include_once('controller/ProductoController.php');
 include_once('controller/SeccionesController.php');
+include_once('controller/EdicionesController.php');
 
 include_once ('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -65,6 +67,10 @@ class Configuration {
     {
         return new SeccionesModel($this->database);
     }
+    private function getEdicionesModel()
+    {
+        return new EdicionesModel($this->database);
+    }
    //--------------------------------Controllers----------------------------------------
     public function getRegisterController(){
         return new RegisterController($this->view, $this->getRegisterModel(),$this->getMailer());
@@ -90,7 +96,9 @@ class Configuration {
     public function getSeccionesController() {
         return new SeccionesController($this->view, $this->getSeccionesModel());
     }
-
+    public function getEdicionesController() {
+        return new EdicionesController($this->view, $this->getEdicionesModel());
+    }
 
 
 }

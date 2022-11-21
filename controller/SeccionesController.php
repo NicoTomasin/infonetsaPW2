@@ -25,12 +25,10 @@ class SeccionesController
     }
     public function default()
     {
-
-        $producto = $_GET["producto"] ?? '';
+        $edicion= $_POST["edicion"] ?? '';
+        $producto = $_POST["producto"] ?? '';
         $secciones=$this->model->seccionesporproducto($producto);
         $this->renderer->render("SeccionesDelProducto.mustache",$secciones);
-
-
     }
 
 
