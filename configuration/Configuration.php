@@ -94,7 +94,7 @@ class Configuration {
         return new UsuarioController($this->view,$this->getUsuarioModel(),$this->getArticuloModel(),$this->getProductoModel(),$this->getSeccionesModel());
     }
     public function getHomeController() {
-        return new homeController($this->view, $this->getUsuarioController());
+        return new homeController($this->view, $this->getUsuarioController(), $this->getArticuloController());
     }
     public function getProductoController() {
         return new ProductoController($this->view, $this->getProductoModel());

@@ -20,9 +20,9 @@ class ArticuloController
             $producto = $_POST["producto"] ?? '';
             $seccion = $_POST["seccion"] ?? '';
             $cuerpo = $_POST["cuerpo"] ?? '';
-            if($_FILES){
+            if ($_FILES) {
                 $imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
-            } else{
+            } else {
                 $imagen = null;
             }
             $escritor = $_SESSION['UsrMail'];
@@ -167,6 +167,19 @@ class ArticuloController
 
         } else {
             Redirect::doIt('/');
+        }
+    }
+
+    public function dosArticulosRandom()
+    {
+        $articulos = $this->model->buscarDosArticulosRandom();
+
+        if ($articulos) {
+            for ($i = 0; $i < count($articulos); $i++) {
+                $articulos[$i]['imagen'] = base64_encode($articulos[$i]['imagen']);
+            }
+            return $articulos;
+
         }
     }
 }
