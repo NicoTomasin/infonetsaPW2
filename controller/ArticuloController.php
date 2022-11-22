@@ -155,7 +155,8 @@ class ArticuloController
         $producto = $_POST["producto"] ?? false;
         $edicion = $_POST["edicion"] ?? false;
         $seccion = $_POST["id"] ?? false;
-
+        header('Cache-Control: no cache');
+        session_cache_limiter('private_no_expire');
 
         if ($producto) {
             if ($edicion) {
