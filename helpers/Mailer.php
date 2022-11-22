@@ -30,7 +30,7 @@ class Mailer
 
         try {
             //Recipients
-            $this->mail->setFrom('infonetsa955@gmail.com');
+            $this->mail->setFrom('nsngt47@gmail.com');
             $this->mail->addAddress($destino);
 
             //Content
