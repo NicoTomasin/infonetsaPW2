@@ -16,8 +16,8 @@ class RegisterController {
     }
 
     public function alta(){
-        $nombre = $_POST["nombre"]??Redirect::doIt('/');;
-        $apellido = $_POST["apellido"]??Redirect::doIt('/');;
+        $nombre = $_POST["nombre"]??'';;
+        $apellido = $_POST["apellido"]??'';;
         $mail = $_POST["mail"]??Redirect::doIt('/');;
         $password = md5($_POST["password"])??Redirect::doIt('/');;
         $tipo = $_POST["tipo"]??"2";
