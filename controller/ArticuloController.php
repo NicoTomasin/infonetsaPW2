@@ -14,12 +14,12 @@ class ArticuloController
     public function crear()
     {
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('ESCRITOR')) {
-            $titulo = $_POST["titulo"] ?? '';
-            $subtitulo = $_POST["subtitulo"] ?? '';
-            $edicion = $_POST["edicion"] ?? '';
-            $producto = $_POST["producto"] ?? '';
-            $seccion = $_POST["seccion"] ?? '';
-            $cuerpo = $_POST["cuerpo"] ?? '';
+            $titulo = $_POST["titulo"] ?? Redirect::doIt('/');
+            $subtitulo = $_POST["subtitulo"] ?? Redirect::doIt('/');
+            $edicion = $_POST["edicion"] ?? Redirect::doIt('/');
+            $producto = $_POST["producto"] ?? Redirect::doIt('/');
+            $seccion = $_POST["seccion"] ?? Redirect::doIt('/');
+            $cuerpo = $_POST["cuerpo"] ?? Redirect::doIt('/');
             if ($_FILES) {
                 $imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
             } else {
@@ -42,7 +42,7 @@ class ArticuloController
     public function eliminar()
     {
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedenAcceder('ESCRITOR', "EDITOR")) {
-            $id = $_POST["id"] ?? '';
+            $id = $_POST["id"] ?? Redirect::doIt('/');
             $this->model->eliminar($id);
             //TODO:if ESCRITOR notificar que se elimino correctamente
             //TODO:if EDITOR notificar que se elimino correctamente y notificar ESCRITOR que x EDITOR elimino su publicacion
@@ -55,7 +55,7 @@ class ArticuloController
     public function publicar()
     {
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('EDITOR')) {
-            $id = $_POST["id"] ?? '';
+            $id = $_POST["id"] ?? Redirect::doIt('/');
             $this->model->publicar($id);
             //TODO:Notificar al escritor que se publico su articulo
             Redirect::doIt('/');
@@ -68,7 +68,7 @@ class ArticuloController
     public function correccion()
     {
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('EDITOR')) {
-            $id = $_POST["id"] ?? '';
+            $id = $_POST["id"] ?? Redirect::doIt('/');
             $this->model->corregir($id);
             //TODO: Notificar a escritor que se necesita edicion
             Redirect::doIt('/');
@@ -81,7 +81,7 @@ class ArticuloController
     public function leer()
     {
         //TODO:Validar compra
-        $id = $_POST["id"] ?? '';
+        $id = $_POST["id"] ?? Redirect::doIt('/');
         $articulo = $this->model->buscarArticuloEspecifico($id);
         $articulo[0]['imagen'] = base64_encode($articulo[0]['imagen']);
         $this->renderer->render('Articulo.mustache', $articulo[0]);
@@ -90,7 +90,7 @@ class ArticuloController
     public function edicion()
     {
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('ESCRITOR')) {
-            $id = $_POST["id"] ?? '';
+            $id = $_POST["id"] ?? Redirect::doIt('/');
             $datos['usuario']['esEscritor'] = true;
             $datos['articulo'] = $this->model->verarticuloporcomprobar($id);
             $datos['articulo'][0]['imagen'] = base64_encode($datos['articulo'][0]['imagen']);
@@ -104,7 +104,7 @@ class ArticuloController
     public function verarticuloporcomprobar()
     {
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedenAcceder('ESCRITOR', "EDITOR")) {
-            $id = $_POST["id"] ?? '';
+            $id = $_POST["id"] ?? Redirect::doIt('/');
             $articulo = $this->model->verarticuloporcomprobar($id);
             $articulo[0]['imagen'] = base64_encode($articulo[0]['imagen']);
             $this->renderer->render('Articulo.mustache', $articulo[0]);
@@ -116,7 +116,7 @@ class ArticuloController
     public function paraeditar()
     {
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('ESCRITOR')) {
-            $escritor = $_POST["escritor"] ?? '';
+            $escritor = $_POST["escritor"] ?? Redirect::doIt('/');
             $articulos = $this->model->verarticulosparaeditar($escritor);
             if ($articulos) {
                 for ($i = 0; $i < count($articulos); $i++) {
@@ -177,27 +177,6 @@ class ArticuloController
             }
         }
     }
-
-
-    /*  {
-         $producto = $_POST["seccion"] ?? false;
-         if ($producto) {
-             $articulos = $this->model->buscarArticulosDeUnProducto($producto);
-
-             if ($articulos) {
-                 for ($i = 0; $i < count($articulos); $i++) {
-                     $articulos[$i]['imagen'] = base64_encode($articulos[$i]['imagen']);
-                 }
- $this->renderer->render('ArticulosPorProducto.mustache', $articulos);
- } else {
-     Redirect::doIt('/');
- }
-
- } else {
-     Redirect::doIt('/');
- }
- }*/
-
 
     public function default()
     {

@@ -13,7 +13,7 @@ class EdicionesController
 
     public function default()
     {
-        $producto = $_GET["producto"] ?? '';
+        $producto = $_GET["producto"] ?? Redirect::doIt('/');;
         $data["ediciones"] = $this->model->buscarEdicionesDeUnProducto($producto);
         $data["usuario"] = $_SESSION['UsrMail'];
         $this->renderer->render('Ediciones.mustache', $data);

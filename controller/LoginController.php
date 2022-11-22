@@ -18,8 +18,8 @@ class LoginController
 
     public function procesar()
     {
-        $mail = $_POST["mail"] ?? '';
-        $password = md5($_POST["password"]) ?? '';
+        $mail = $_POST["mail"] ?? Redirect::doIt('/');;
+        $password = md5($_POST["password"]) ?? Redirect::doIt('/');;
         $respuestaPass = $this->model->buscarUsuario($mail);
         $respuestaEstado = $this->model->buscarEstadoDeUsuario($mail); 
 

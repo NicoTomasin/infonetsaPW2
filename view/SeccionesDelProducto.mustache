@@ -18,32 +18,18 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h3 class="mb-3">Productos</h3>
+                <h3 class="mb-3">Secciones</h3>
             </div>
             <div class="col-12">
                 <div class="row">
                      {{#.}}
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <a href="/articulo?seccion={{id}}" style="color: black; text-decoration: none" >
-
-                                <div class="card-body">
-                                    <h4 class="card-title">{{nombre}}</h4>
-
-                                </div>
-                                </a>
-                            </div>
-                        </div>
-
                             <form method="post" action="/articulo/vista">
                                 <input id="edicion" name="edicion" type="hidden" value="{{id}}">
                                  <input id="edicion" name="edicion" type="hidden" value="{{edicion}}">
                                  <input id="id" name="id" type="hidden" value="{{id}}">
                                 <input id="producto" name="producto" type="hidden" value="{{producto}}">
-                                <button type="submit">{{nombre}}</button>
+                                <button type="submit" class="btn btn-secondary">{{nombre}}</button>
                             </form>
-
-
                     {{/.}}
                 </div>
             </div>

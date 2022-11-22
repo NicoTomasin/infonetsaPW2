@@ -13,16 +13,16 @@ class ProductoController
 
     public function agregar()
     {
-        $nombre = $_POST["nombre"] ?? '';
-        $tipo = $_POST["tipo"] ?? '';
-        $logo = $_POST["logo"] ?? '';
-        $descripcion = $_POST["descripcion"] ?? '';
+        $nombre = $_POST["nombre"] ?? Redirect::doIt('/');;
+        $tipo = $_POST["tipo"] ?? Redirect::doIt('/');;
+        $logo = $_POST["logo"] ?? Redirect::doIt('/');;
+        $descripcion = $_POST["descripcion"] ?? Redirect::doIt('/');;
         $this->model->agregarProducto($nombre, $tipo,$descripcion,$logo);
         Redirect::doIt('/');
     }
     public function eliminar()
     {
-        $id = $_POST["id"] ?? '';
+        $id = $_POST["id"] ?? Redirect::doIt('/');;
         $this->model->eliminarProducto($id);
         Redirect::doIt('/');
     }

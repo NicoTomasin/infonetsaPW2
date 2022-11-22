@@ -16,7 +16,7 @@ class EdicionesModel
         $data = $this->database->query($sql);
         for($i = 0; $i<count($data); $i++){
             $fecha = $data[$i]["edicion"];
-            $data[$i]["secciones"] = $this->database->query("SELECT secciones.nombre FROM articulo JOIN secciones on articulo.seccion = secciones.id WHERE producto = '$producto' AND articulo.edicion = '$fecha';");
+            $data[$i]["secciones"] = $this->database->query("SELECT DISTINCT secciones.nombre FROM articulo JOIN secciones on articulo.seccion = secciones.id WHERE producto = '$producto' AND articulo.edicion = '$fecha';");
         }
 
         return $data;

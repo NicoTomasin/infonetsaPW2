@@ -33,10 +33,11 @@
     .tftable tr:hover {
         background-color: #171515;
     }
+    .container {
+        margin-top: 2rem;
+    }
 </style>
 {{> header}}
-
-
 <section class="pt-5 pb-5">
 
 
@@ -63,12 +64,12 @@
                                 <form method="post" action="/secciones">
                                     <input id="edicion" name="edicion" type="hidden" value="{{edicion}}">
                                     <input id="producto" name="producto" type="hidden" value="{{producto}}">
-                                    <button type="submit" class="col-12">Ver</button>
+                                    <button type="submit"  class="col-12 btn btn-secondary">Ver</button>
                                 </form>
                                 <form method="post" action="/comprar/edicion">
                                     <input id="edicion" name="edicion" type="hidden" value="{{edicion}}">
                                     <input id="producto" name="producto" type="hidden" value="{{producto}}">
-                                    <button type="submit" class="col-12">Comprar</button>
+                                    <button type="submit" class="col-12 btn btn-secondary">Comprar</button>
                                 </form>
                             </td>
                         </tr>
