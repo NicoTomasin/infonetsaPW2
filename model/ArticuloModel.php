@@ -40,7 +40,7 @@ class ArticuloModel
     }
     public function buscarTodosLosArticulosActivos()
     {
-        $sql = "SELECT articulo.id AS 'id', producto.nombre AS 'producto', secciones.nombre AS 'seccion', articulo.titulo FROM `producto` JOIN `articulo` JOIN `secciones` WHERE articulo.producto = producto.id AND secciones.id = articulo.seccion AND articulo.estado = 1";
+        $sql = "SELECT articulo.id AS 'id', producto.nombre AS 'producto', secciones.nombre AS 'seccion', articulo.titulo, articulo.imagen FROM `producto` JOIN `articulo` JOIN `secciones` WHERE articulo.producto = producto.id AND secciones.id = articulo.seccion AND articulo.estado = 1";
         return $this->database->query($sql);
     }
     public function verarticulosparaeditar($escritor)
@@ -83,7 +83,7 @@ class ArticuloModel
         public function buscarDosArticulosRandom()
     {
 
-        $sql = "SELECT * FROM `articulo` ORDER BY RAND () LIMIT 2";
+        $sql = "SELECT * FROM `articulo` WHERE estado = 1 ORDER BY RAND () LIMIT 2 ";
 
         return $this->database->query($sql);
 
