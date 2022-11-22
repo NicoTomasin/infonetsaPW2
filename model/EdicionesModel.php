@@ -12,7 +12,7 @@ class EdicionesModel
 
     public function buscarEdicionesDeUnProducto($producto)
     {
-        $sql = "SELECT `edicion`, COUNT(articulo.id) AS 'cantidadArticulos', `producto` FROM `articulo`WHERE `producto` = '$producto' GROUP BY `edicion` ORDER BY `edicion` ASC;";
+        $sql = "SELECT `edicion`, COUNT(articulo.id) AS 'cantidadArticulos', `producto` FROM `articulo`WHERE `producto` = '$producto' AND `estado` = 1  GROUP BY `edicion` ORDER BY `edicion` ASC;";
         $data = $this->database->query($sql);
         for($i = 0; $i<count($data); $i++){
             $fecha = $data[$i]["edicion"];

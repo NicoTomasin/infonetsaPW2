@@ -35,7 +35,7 @@ class SeccionesModel
         };
     }
     public  function seccionesporproducto($producto,$edicion)
-    {  $sql = "SELECT DISTINCT secciones.nombre, secciones.id, articulo.producto, articulo.edicion FROM `secciones`inner JOIN `articulo`on secciones.id=articulo.seccion where articulo.producto='$producto' and articulo.edicion = '$edicion'";
+    {  $sql = "SELECT DISTINCT secciones.nombre, secciones.id, articulo.producto, articulo.edicion FROM `secciones`inner JOIN `articulo`on secciones.id=articulo.seccion where articulo.producto='$producto' and articulo.edicion = '$edicion' AND articulo.estado = 1";
         return $this->database->query($sql);
 
     }
