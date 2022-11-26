@@ -1,17 +1,28 @@
 {{^articulo}}
+
+
+
+
+
     <div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
         <h2 class="fw-bold text-center py-5">Crear Nota</h2>
+
+
+
+
+
+        <div class="container border border-3">
         <form method="post" action="/articulo/crear" enctype="multipart/form-data">
             <div class="mb-4">
-                <label for="titulo" class="form-label">Titulo</label>
+                <label for="titulo" class="form-label pt-4"><h4>Titulo</h4></label>
                 <input type="text" class="form-control" name="titulo" required>
             </div>
             <div class="mb-4">
-                <label for="subtitulo" class="form-label">SubTitulo</label>
+                <label for="subtitulo" class="form-label pt-2"><h4>Subtitulo</h4></label>
                 <input type="text" class="form-control" name="subtitulo" required>
             </div>
             <div class="mb-4">
-                <label for="fecha" class="form-label">Producto a publicar</label>
+                <label for="fecha"class="form-label pt-2"><h4>Productos a publicar</h4></label>
                 <select class="form-control" name="producto" id="producto" required>
                     {{#productos}}
                         <option value={{id}}>{{nombre}}</option>
@@ -19,7 +30,7 @@
                 </select>
             </div>
             <div class="mb-4">
-                <label for="fecha" class="form-label">Seccion</label>
+                <label for="fecha" class="form-label pt-2"><h4>Seccion</h4></label>
                 <select class="form-control" name="seccion" id="seccion" required>
                     {{#secciones}}
                         <option value={{id}}>{{nombre}}</option>
@@ -27,15 +38,15 @@
                 </select>
             </div>
             <div class="mb-4">
-                <label for="edicion" class="form-label">Edicion noticia</label>
+                <label for="edicion" class="form-label pt-2"><h4>Edicion noticia</h4></label>
                 <input type="date" class="form-control" name="edicion" required>
             </div>
             <div class="mb-4">
-                <label for="cuerpo" class="form-label">Cuerpo de la noticia</label>
+                <label for="cuerpo" class="form-label pt-2"><h4>Cuerpo de la noticia</h4></label>
                 <textarea name="cuerpo" class="form-control" placeholder="Cuerpo" required></textarea>
             </div>
             <div class="mb-4">
-                <label for="imagen" class="form-label">Imagen</label>
+                <label for="imagen"class="form-label pt-2"><h4>Imagen</h4></label>
                 <input type="file" class="form-control" name="imagen" required>
             </div>
             <div class="d-grid">
@@ -52,6 +63,7 @@
             <input id="escritor" name="escritor" type="hidden" value="{{0.mail}}">
             <button type="submit" class="btn-secondary">Ver mis notas</button>
         </form>
+    </div>
     </div>
 {{/articulo}}
 {{#articulo}}
