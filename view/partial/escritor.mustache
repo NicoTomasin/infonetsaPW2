@@ -46,20 +46,21 @@
                 <input type="file" class="form-control" name="imagen" required>
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn-secondary">Crear Nota</button>
+                <button type="submit" class="btn-success">Crear Nota</button>
             </div>
-
-        </form>
-
-        <form method="post" action="/articulo/paraeditar">
-            <input id="escritor" name="escritor" type="hidden" value="{{0.mail}}">
-            <button type="submit" class="btn-secondary">Ver notas pendientes de edicion</button>
-        </form>
-        <form method="post" action="/articulo/misarticulos">
-            <input id="escritor" name="escritor" type="hidden" value="{{0.mail}}">
-            <button type="submit" class="btn-secondary">Ver mis notas</button>
+            <br>
         </form>
     </div>
+    </div>
+    <div class="col-12" style="display: flex; justify-content: center;">
+    <form method="post" action="/articulo/paraeditar" style="padding: 5px;">
+        <input id="escritor" name="escritor" type="hidden" value="{{0.mail}}">
+        <button type="submit" class="btn-secondary">Ver notas pendientes de edicion</button>
+    </form>
+    <form method="post" action="/articulo/misarticulos" style="padding: 5px;">
+        <input id="escritor" name="escritor" type="hidden" value="{{0.mail}}">
+        <button type="submit" class="btn-secondary">Ver mis notas</button>
+    </form>
     </div>
 {{/articulo}}
 {{#articulo}}
