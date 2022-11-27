@@ -19,4 +19,14 @@ class ComprarModel
         $sql = "INSERT INTO suscripcion(`usuario`, `producto`, `fecha_Inicio`,`fecha_Fin`) VALUES ('$usuario', '$producto', '$date','$expirationDate')";
         $this->database->execute($sql);
     }
+    public function extender($usuario, $producto, $date, $expirationDate)
+    {
+
+
+
+        $sql = "UPDATE suscripcion inner join producto on suscripcion.producto=producto.id
+        SET fecha_Fin= DATE(DATE_ADD(fecha_Fin, INTERVAL 1 MONTH))
+        WHERE producto.nombre='$producto'";
+        $this->database->execute($sql);
+    }
 }

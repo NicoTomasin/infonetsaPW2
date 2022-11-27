@@ -18,12 +18,12 @@
     text-align:center;
     }
 </style>
+<br><br><br>
+ <h1 class="text-center">Sección Editor</h1>
 <section class="pt-5 pb-5">
     <div class="container">
         <div class="row">
-            <div class="col-6">
-                <h3 class="mb-3">Publicaciones pendientes de revision</h3>
-            </div>
+            <h3 class="mb-3 text-center">Publicaciones pendientes de revision</h3>
             <div class="col-12">
                 <div class="row">
                     {{#articulosPendientes}}
@@ -41,25 +41,25 @@
                                     <div class="p-2">
                                         <form method="post" action="/articulo/verarticuloporcomprobar">
                                             <input id="id" name="id" type="hidden" value="{{id}}">
-                                            <button type="submit" class="btn-secondary">Ver</button>
+                                            <button type="submit" class="btn btn-primary">Ver</button>
                                         </form>
                                     </div>
                                     <div class="p-2">
                                         <form method="post" action="/articulo/eliminar">
                                             <input id="id" name="id" type="hidden" value="{{id}}">
-                                            <button type="submit" class="btn-secondary">Eliminar</button>
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </form>
                                     </div>
                                     <div class="p-2">
                                         <form method="post" action="/articulo/publicar">
                                             <input id="id" name="id" type="hidden" value="{{id}}">
-                                            <button type="submit" class="btn-secondary">Publicar</button>
+                                            <button type="submit" class="btn btn-success">Publicar</button>
                                         </form>
                                     </div>
                                     <div class="p-2">
                                         <form method="post" action="/articulo/correccion">
                                             <input id="id" name="id" type="hidden" value="{{id}}">
-                                            <button type="submit" class="btn-secondary">Correccion</button>
+                                            <button type="submit" class="btn btn-info">Correccion</button>
                                         </form>
                                     </div>
                                 </div>
@@ -95,30 +95,39 @@
                                     <div class="p-2">
                                         <form method="post" action="/articulo/verarticuloporcomprobar">
                                             <input id="id" name="id" type="hidden" value="{{id}}">
-                                            <button type="submit" class="btn-secondary">Ver</button>
+                                            <button type="submit" class="btn btn-primary">Ver</button>
                                         </form>
                                     </div>
                                     <div class="p-2">
                                         <form method="post" action="/articulo/eliminar">
                                             <input id="id" name="id" type="hidden" value="{{id}}">
-                                            <button type="submit" class="btn-secondary">Eliminar</button>
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </form>
                                     </div>
                                     <div class="p-2">
                                         <form method="post" action="/articulo/publicar">
                                             <input id="id" name="id" type="hidden" value="{{id}}">
-                                            <button type="submit" class="btn-secondary">Publicar</button>
+                                            <button type="submit" class="btn btn-success">Publicar</button>
                                         </form>
                                     </div>
+                                </div>
+                                <div class="d-flex justify-content-center">
                                     <div class="p-2">
                                         <form method="post" action="/articulo/correccion">
                                             <input id="id" name="id" type="hidden" value="{{id}}">
-                                            <button type="submit" class="btn-secondary">Correccion</button>
+                                            <button type="submit" class="btn btn-info">Correccion</button>
+                                        </form>
+                                    </div>
+                                    <div class="p-2">
+                                        <form method="post" action="/articulo/despublicar">
+                                            <input id="id" name="id" type="hidden" value="{{id}}">
+                                            <button type="submit" class="btn btn-warning">Despublicar</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     {{/articulosActivos}}
                 </div>
             </div>

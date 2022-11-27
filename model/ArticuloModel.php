@@ -33,6 +33,11 @@ class ArticuloModel
         $sql = "UPDATE articulo SET `estado` = 1 WHERE `id` = '$id'";
         $this->database->execute($sql);
     }
+    public function despublicar($id)
+    {
+        $sql = "UPDATE articulo SET `estado` = 0 WHERE `id` = '$id'";
+        $this->database->execute($sql);
+    }
     public function corregir($id)
     {
         $sql = "UPDATE articulo SET `estado` = 2 WHERE `id` = '$id'";

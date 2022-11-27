@@ -30,7 +30,7 @@ class ProductoModel
     public function buscarProductosqueNoEstoySuscripto()
     {
         $date = date('Y-m-d', time());
-        $sql = "SELECT * FROM producto
+        $sql = "SELECT distinct * FROM producto
 WHERE NOT EXISTS(SELECT * from suscripcion WHERE producto.id=suscripcion.producto and suscripcion.fecha_Fin> '$date')";
         return $this->database->query($sql);
     }
