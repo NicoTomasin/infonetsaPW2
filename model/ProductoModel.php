@@ -27,6 +27,14 @@ class ProductoModel
         $sql = "SELECT * FROM `producto`";
         return $this->database->query($sql);
     }
+    public function buscarProductosqueNoEstoySuscripto()
+    {
+        $sql = "SELECT * FROM producto
+WHERE NOT EXISTS(SELECT * from suscripcion WHERE producto.id=suscripcion.producto)";
+        return $this->database->query($sql);
+    }
+
+
     public function buscarSecciones()
     {
         $sql = "SELECT * FROM `secciones`";

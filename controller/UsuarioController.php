@@ -20,7 +20,7 @@ class UsuarioController{
         $datos['tiposDeProductos'] =  $this->modelProducto->buscarTiposDeProductos();
         $datos['secciones'] =  $this->modelSecciones->buscarSecciones();
         $datos['productosSubscriptos']= $this->modelProducto->buscarproductosEnLosQueestoySubscripto();
-        $datos['productos'] =  $this->modelProducto->buscarProductos();
+        $datos['productos'] =  $this->modelProducto->buscarProductosqueNoEstoySuscripto();
         switch ($datos['usuario'][0]['tipo']){
             case '1':
                 $datos['usuario']['esAdmin'] = true;
