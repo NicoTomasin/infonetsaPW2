@@ -27,10 +27,25 @@ class ProductoModel
         $sql = "SELECT * FROM `producto`";
         return $this->database->query($sql);
     }
+    public function buscarProductosqueNoEstoySuscripto()
+    {
+        $date = date('Y-m-d', time());
+        $sql = "SELECT distinct * FROM producto
+WHERE NOT EXISTS(SELECT * from suscripcion WHERE producto.id=suscripcion.producto and suscripcion.fecha_Fin> '$date')";
+        return $this->database->query($sql);
+    }
+
+
     public function buscarSecciones()
     {
         $sql = "SELECT * FROM `secciones`";
         return $this->database->query($sql);
+    }
+    public function buscarproductosEnLosQueestoySubscripto()
+            {$date = date('Y-m-d', time());
+        $sql = "SELECT * FROM `suscripcion` inner join producto on suscripcion.producto=producto.id WHERE fecha_Fin> '$date'";
+        return $this->database->query($sql);
+
     }
 
 

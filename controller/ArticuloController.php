@@ -92,6 +92,8 @@ class ArticuloController
 
     public function leer()
     {
+        header('Cache-Control: no cache');
+        session_cache_limiter('private_no_expire');
         //TODO:Validar compra
         $id = $_POST["id"] ?? Redirect::doIt('/');
         $articulo = $this->model->buscarArticuloEspecifico($id);
@@ -100,7 +102,8 @@ class ArticuloController
     }
 
     public function edicion()
-    {
+    {  header('Cache-Control: no cache');
+        session_cache_limiter('private_no_expire');
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('ESCRITOR')) {
             $id = $_POST["id"] ?? Redirect::doIt('/');
             $datos['usuario']['esEscritor'] = true;
@@ -126,7 +129,8 @@ class ArticuloController
     }
 
     public function paraeditar()
-    {
+    {  header('Cache-Control: no cache');
+        session_cache_limiter('private_no_expire');
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('ESCRITOR')) {
             $escritor = $_POST["escritor"] ?? Redirect::doIt('/');
             $articulos = $this->model->verarticulosparaeditar($escritor);
@@ -145,7 +149,8 @@ class ArticuloController
     }
 
     public function misarticulos()
-    {
+    {  header('Cache-Control: no cache');
+        session_cache_limiter('private_no_expire');
         if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('ESCRITOR')) {
             $escritor = $_POST["escritor"] ?? '';
             $articulos = $this->model->verMisArticulos($escritor);
