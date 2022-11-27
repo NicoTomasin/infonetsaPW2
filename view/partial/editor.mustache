@@ -16,6 +16,15 @@
     margin-bottom:10px;
     font-size:20px;
     text-align:center;
+     background-color: #E3DCF5;
+    }
+    .seccionnombre
+    {
+    font-size:20px;
+    text-align:center;
+    font-weight: 600;
+    margin-bottom:10px;
+
     }
 </style>
 <br><br><br>
@@ -27,7 +36,12 @@
             <div class="col-12">
                 <div class="row">
                     {{#articulosPendientes}}
-                        <div class="col-md-4 mb-3"><div class="nombreproducto">{{nombre}}</div>
+                        <div class="col-md-4 mb-3"><div class="nombreproducto">{{nombre}}
+
+                        </div>
+                        <div class="seccionnombre">{{nombre2}}</div>
+
+
                             <div class="card">
                                 <img class="img-fluid" alt="100%x280" src="data:image/jpg;base64,{{imagen}}">
                                 <div class="card-body">
@@ -81,7 +95,9 @@
             <div class="col-12">
                 <div class="row">
                     {{#articulosActivos}}
-                        <div class="col-md-4 mb-3"><div class="nombreproducto">{{producto}}</div>
+                        <div class="col-md-4 mb-3">
+                        <div class="nombreproducto">{{producto}}</div>
+ <div class="seccionnombre">{{seccion}}</div>
                             <div class="card">
                                 <img class="img-fluid" alt="100%x280" src="data:image/jpg;base64,{{imagen}}">
                                 <div class="card-body">

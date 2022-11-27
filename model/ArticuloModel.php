@@ -19,7 +19,7 @@ class ArticuloModel
     }
     public function buscarArticulosPendientes()
     {
-        $sql = "SELECT articulo.escritor, articulo.titulo, producto.nombre, articulo.cuerpo, articulo.imagen, articulo.id FROM `articulo` join `producto` WHERE articulo.producto = producto.id AND articulo.estado = 0 order by producto.nombre";
+        $sql = "SELECT articulo.escritor, articulo.titulo, producto.nombre as nombre, articulo.cuerpo, articulo.imagen, articulo.id, secciones.nombre as nombre2 FROM secciones inner join articulo on secciones.id=articulo.seccion inner join producto on articulo.producto=producto.id WHERE articulo.producto = producto.id AND articulo.estado = 0 order by producto.nombre";
         return $this->database->query($sql);
     }
     public function eliminar($id)
