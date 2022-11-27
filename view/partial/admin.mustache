@@ -2,12 +2,12 @@
 <div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
       <h1 class='w3'>Sección Administrador</h1>
   </div>
-<h2 class="text-center  pb-2">Registros:</h2>
+<h2 class="text-center  pb-2">Registrar</h2>
 <div class="container">
     <div class="row g-2">
         <div class="col-6">
             <div class="p-3 border bg-light">
-                <h3 class="fw-bold text-center py-5">Registrar Editor</h3>
+                <h3 class="fw-bold text-center py-3">Registrar Editor</h3>
                 <form method="post" action="/register/alta">
                     <div class="mb-4">
                         <label for="mail" class="form-label">Email</label>
@@ -26,7 +26,7 @@
         </div>
         <div class="col-6">
             <div class="p-3 border bg-light">
-                <h3 class="fw-bold text-center py-5">Registrar Escritor</h3>
+                <h3 class="fw-bold text-center py-3">Registrar Escritor</h3>
                 <form method="post" action="/register/alta">
                     <div class="mb-4">
                         <label for="mail" class="form-label">Email</label>
@@ -43,12 +43,12 @@
                 </form></div>
         </div>
 
-        <h2 class="text-center pt-5 pb-2">Agregar:</h2>
+        <h2 class="text-center pt-5 pb-2">Agregar/Eliminar</h2>
 
 
         <div class="col-6">
             <div class="p-3 border bg-light">
-                <h3 class="fw-bold text-center py-5">Agregar Producto</h3>
+                <h3 class="fw-bold text-center py-3">Agregar Producto</h3>
                 <form method="post" action="/producto/agregar">
                     <div class="mb-4">
                         <label for="nombre" class="form-label">Nombre</label>
@@ -71,48 +71,51 @@
                         </select>
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Agregar producto</button>
+                        <button type="submit" class="btn btn-success">Agregar producto</button>
                     </div>
                 </form></div>
+
         </div>
         <div class="col-6">
             <div class="p-3 border bg-light">
-                <h3 class="fw-bold text-center py-5">Agregar Seccion</h3>
-                <form method="post" action="/secciones/agregar">
+                <h3 class="fw-bold text-center py-3">Eliminar Producto</h3>
+                <form method="post" action="/producto/eliminar">
                     <div class="mb-4">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" name="nombre">
+                        <label for="fecha" class="form-label">Producto</label>
+                        <select class="form-control" name="id" id="id">
+                            {{#productos}}
+                                <option value={{id}}>{{nombre}}</option>
+                            {{/productos}}
+                        </select>
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Agregar Seccion</button>
+                        <button type="submit" class="btn btn-danger">Eliminar Producto</button>
                     </div>
-                </form>
-            </div>
+                </form></div>
         </div>
-    </div>
-    <h2 class="text-center pt-5 pb-2">Eliminar:</h2>
 
-        <div class="row g-2">
-            <div class="col-6 pt-2">
+    </div>
+
+
+        <div class="row g-2 ">
+            <div class="col-6 pt-5">
                 <div class="p-3 border bg-light">
-                    <h3 class="fw-bold text-center py-5">Eliminar Producto</h3>
-                    <form method="post" action="/producto/eliminar">
+                    <h3 class="fw-bold text-center py-3">Agregar Seccion</h3>
+                    <form method="post" action="/secciones/agregar">
                         <div class="mb-4">
-                            <label for="fecha" class="form-label">Producto</label>
-                            <select class="form-control" name="id" id="id">
-                                {{#productos}}
-                                    <option value={{id}}>{{nombre}}</option>
-                                {{/productos}}
-                            </select>
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" name="nombre">
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-danger">Eliminar Producto</button>
+                            <button type="submit" class="btn btn-success">Agregar Seccion</button>
                         </div>
-                    </form></div>
+                    </form>
+                </div>
             </div>
-            <div class="col-6 pt-2">
+
+            <div class="col-6 pt-5">
                 <div class="p-3 border bg-light">
-                    <h3 class="fw-bold text-center py-5">Eliminar Seccion</h3>
+                    <h3 class="fw-bold text-center py-3">Eliminar Seccion</h3>
                     <form method="post" action="/secciones/eliminar">
                         <div class="mb-4">
                             <label for="fecha" class="form-label">Nombre</label>
