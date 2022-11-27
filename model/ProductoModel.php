@@ -32,6 +32,12 @@ class ProductoModel
         $sql = "SELECT * FROM `secciones`";
         return $this->database->query($sql);
     }
+    public function buscarproductosEnLosQueestoySubscripto()
+    {
+        $sql = "SELECT * FROM suscripcion inner join producto on suscripcion.producto=producto.id";
+        return $this->database->query($sql);
+
+    }
 
 
 }

@@ -15,8 +15,37 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
+                <h3 class="mb-3">Mis Suscripciones</h3>
+            </div>
+
+             <div class="col-12">
+                            <div class="row">
+                                {{#productosSubscriptos}}
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card">
+                                            <a href="/ediciones?producto={{id}}" style="color: black; text-decoration: none" >
+                                            <img class="img-fluid" alt="100%x280" src="{{logo}}">
+                                            <div class="card-body">
+                                                <h4 class="card-title">{{nombre}}</h4>
+                                                <p class="card-text">{{descripcion}}</p>
+                                            </div>
+                                            </a>
+                                            <form method="post" action="/comprar/suscripcion">
+                                                <input id="producto" name="producto" type="hidden" value="{{id}}">
+                                            </form>
+                                        </div>
+                                    </div>
+                                {{/productosSubscriptos}}
+                            </div>
+                        </div>
+
+
+
+
+  <div class="col-6">
                 <h3 class="mb-3">Productos</h3>
             </div>
+
             <div class="col-12">
                 <div class="row">
                     {{#productos}}
