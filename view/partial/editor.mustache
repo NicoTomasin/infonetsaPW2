@@ -10,6 +10,13 @@
     section {
         margin-top: 2rem;
     }
+    .nombreproducto
+    {margin-top:10px;
+    font-weight:bold;
+    margin-bottom:10px;
+    font-size:20px;
+    text-align:center;
+    }
 </style>
 <section class="pt-5 pb-5">
     <div class="container">
@@ -20,7 +27,7 @@
             <div class="col-12">
                 <div class="row">
                     {{#articulosPendientes}}
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3"><div class="nombreproducto">{{nombre}}</div>
                             <div class="card">
                                 <img class="img-fluid" alt="100%x280" src="data:image/jpg;base64,{{imagen}}">
                                 <div class="card-body">
@@ -58,6 +65,7 @@
                                 </div>
                             </div>
                         </div>
+
                     {{/articulosPendientes}}
                 </div>
             </div>
@@ -73,7 +81,7 @@
             <div class="col-12">
                 <div class="row">
                     {{#articulosActivos}}
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3"><div class="nombreproducto">{{producto}}</div>
                             <div class="card">
                                 <img class="img-fluid" alt="100%x280" src="data:image/jpg;base64,{{imagen}}">
                                 <div class="card-body">
