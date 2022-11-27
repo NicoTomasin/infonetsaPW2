@@ -20,7 +20,7 @@ class UsuarioController{
 
         $datos['tiposDeProductos'] =  $this->modelProducto->buscarTiposDeProductos();
         $datos['secciones'] =  $this->modelSecciones->buscarSecciones();
-
+        $datos['productos2'] =  $this->modelProducto->buscarProductos();
 
         $datos['productosSubscriptos']= $this->modelProducto->buscarproductosEnLosQueestoySubscripto();
         $datos['productos'] =  $this->modelProducto->buscarProductosqueNoEstoySuscripto();
