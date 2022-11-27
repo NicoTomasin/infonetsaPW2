@@ -29,8 +29,9 @@ class ProductoModel
     }
     public function buscarProductosqueNoEstoySuscripto()
     {
+        $date = date('Y-m-d', time());
         $sql = "SELECT * FROM producto
-WHERE NOT EXISTS(SELECT * from suscripcion WHERE producto.id=suscripcion.producto)";
+WHERE NOT EXISTS(SELECT * from suscripcion WHERE producto.id=suscripcion.producto and suscripcion.fecha_Fin> '$date')";
         return $this->database->query($sql);
     }
 
@@ -41,8 +42,8 @@ WHERE NOT EXISTS(SELECT * from suscripcion WHERE producto.id=suscripcion.product
         return $this->database->query($sql);
     }
     public function buscarproductosEnLosQueestoySubscripto()
-    {
-        $sql = "SELECT * FROM suscripcion inner join producto on suscripcion.producto=producto.id";
+            {$date = date('Y-m-d', time());
+        $sql = "SELECT * FROM `suscripcion` inner join producto on suscripcion.producto=producto.id WHERE fecha_Fin> '$date'";
         return $this->database->query($sql);
 
     }

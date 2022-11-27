@@ -17,8 +17,11 @@ class UsuarioController{
     public function datosDelUsuario()
     {
         $datos['usuario'] =  $this->model->buscarDatosDelUsuario($_SESSION['UsrMail']);
+
         $datos['tiposDeProductos'] =  $this->modelProducto->buscarTiposDeProductos();
         $datos['secciones'] =  $this->modelSecciones->buscarSecciones();
+
+
         $datos['productosSubscriptos']= $this->modelProducto->buscarproductosEnLosQueestoySubscripto();
         $datos['productos'] =  $this->modelProducto->buscarProductosqueNoEstoySuscripto();
         switch ($datos['usuario'][0]['tipo']){
