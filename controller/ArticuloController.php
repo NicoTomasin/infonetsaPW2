@@ -64,6 +64,18 @@ class ArticuloController
         }
 
     }
+    public function despublicar()
+    {
+        if (isset($_SESSION['UsrMail']) && SessionTypeChecker::puedeAcceder('EDITOR')) {
+            $id = $_POST["id"] ?? Redirect::doIt('/');
+            $this->model->despublicar($id);
+            //TODO:Notificar al escritor que se publico su articulo
+            Redirect::doIt('/');
+        } else {
+            Redirect::doIt('/');
+        }
+
+    }
 
     public function correccion()
     {
