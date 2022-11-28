@@ -1,11 +1,20 @@
 {{^articulo}}
 
 
-
-
-
-    <div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
-        <h2 class="fw-bold text-center py-5">Crear Nota</h2>
+<p></p><p></p><p></p>
+<h2 class='w3-container w3-content w3-center w3-padding-64 fw-bold text-center py-5'>Sección escritor</h2>
+    <div class="col-12" style="display: flex; justify-content: center;">
+        <form method="post" action="/articulo/paraeditar" style="padding: 5px;">
+            <input id="escritor" name="escritor" type="hidden" value="{{0.mail}}">
+            <button type="submit" class="btn btn-secondary">Ver notas pendientes de edicion</button>
+        </form>
+        <form method="post" action="/articulo/misarticulos" style="padding: 5px;">
+            <input id="escritor" name="escritor" type="hidden" value="{{0.mail}}">
+            <button type="submit" class="btn btn-info">Ver mis notas</button>
+        </form>
+    </div>
+    <div class='w3-container w3-content w3-center ' style='max-width:800px' id='band'>
+        <h4 class="fw-bold text-center py-5">Crear Nota</h4>
 
         <div class="container border border-3">
         <form method="post" action="/articulo/crear" enctype="multipart/form-data">
@@ -46,22 +55,13 @@
                 <input type="file" class="form-control" name="imagen" required>
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn-success">Crear Nota</button>
+                <button type="submit" class="btn btn-success">Crear Nota</button>
             </div>
             <br>
         </form>
     </div>
     </div>
-    <div class="col-12" style="display: flex; justify-content: center;">
-    <form method="post" action="/articulo/paraeditar" style="padding: 5px;">
-        <input id="escritor" name="escritor" type="hidden" value="{{0.mail}}">
-        <button type="submit" class="btn-secondary">Ver notas pendientes de edicion</button>
-    </form>
-    <form method="post" action="/articulo/misarticulos" style="padding: 5px;">
-        <input id="escritor" name="escritor" type="hidden" value="{{0.mail}}">
-        <button type="submit" class="btn-info">Ver mis notas</button>
-    </form>
-    </div>
+
 {{/articulo}}
 {{#articulo}}
 
@@ -86,7 +86,7 @@
             </div>
             <input id="id" name="id" type="hidden" value="{{id}}">
             <div class="d-grid">
-                <button type="submit" class="btn-secondary">Editar Nota</button>
+                <button type="submit" class="   btn-secondary">Editar Nota</button>
             </div>
 
         </form>
